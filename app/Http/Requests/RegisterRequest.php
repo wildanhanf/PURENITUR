@@ -32,7 +32,7 @@ class RegisterRequest extends FormRequest
             'last_name' => 'required',
             'gender' => 'required|max:1',
             'address' => 'required',
-            'telephone' => 'required'
+            'telephone' => 'required|max:14'
 
         ];
     }

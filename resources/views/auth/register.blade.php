@@ -51,9 +51,12 @@
                 <label for="floatingName">Last Name</label>
             </div>
 
-            <div class="form-group form-floating mb-3">
-                <input type="text" class="form-control" name="gender" value="{{ old('gender') }}" placeholder="Gender" required="required" autofocus>
-                <label for="floatingName">Gender</label>
+            <div class="form-group mb-3">
+                <label for="floatingName">Gender</label><br>
+                <input type="radio" id="man" name="gender" value="M"" />
+                <label for=" man">Man</label>
+                <input type="radio" id="woman" name="gender" value="W"" />
+                <label for=" woman">Woman</label>
             </div>
 
             <div class="form-group form-floating mb-3">
