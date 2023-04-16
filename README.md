@@ -1,10 +1,10 @@
-### PURENITUR
+# PURENITUR
 
-# Project Proyek Perangkat Lunak 1
-# Kelompok ArtinyaApaBangMessi
+Project Proyek Perangkat Lunak 1<br>
+Kelompok **ArtinyaApaBangMessi**
 
-# Anggota :
-#    1. Affan Rifqy
-#    2. Rheza Pandya
-#    3. Wildan Hanif
-#    4. Andyka Baswara
+Anggota :
+1. Affan Rifqy
+2. Rheza Pandya
+3. Wildan Hanif
+4. Andyka Baswara
