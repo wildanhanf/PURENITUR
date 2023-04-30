@@ -1,4 +1,4 @@
-<nav class="bg-white border-gray-200 dark:bg-gray-900 mt-0 w-full z-10 top-0">
+<nav class="bg-[#FFFFFF] shadow-md fixed mt-0 w-full z-10 top-0">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="#" class="flex items-center">
             <img src="/img/Logo.png" class="h-18 w-20 mr-3" alt="Logo PURENITUR" />
