@@ -4,9 +4,8 @@
 <head>
     @include('landing.head')
 </head>
-
 <body>
-    <header class="sticky top-0 z-50">
+    <header>
         @include('landing.navbar')
     </header>
     <div>

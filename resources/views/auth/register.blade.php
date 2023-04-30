@@ -1,5 +1,7 @@
 @extends('layouts.auth-master')
-
+<head>
+    @include('landing.head')
+</head>
 @section('content')
 <script src="https://cdn.tailwindcss.com"></script>
 <div class=" bg-[url('/img/register-login.png')] h-screen justify-center flex items-center">
@@ -92,7 +94,7 @@
                 <input type="number" class="border-solid border-2 rounded border-slate-300 w-full" name="telephone" value="{{ old('telephone') }}" placeholder="" required="required" autofocus>
             </div>
                 
-            <button class="w-[270px] h-[35px] bg-cyan-400 rounded-full mx-auto text-white" type="submit">Sign Up</button>
+            <button class="w-[270px] h-[35px] bg-[#079992] rounded-full mx-auto text-white" type="submit">Sign Up</button>
 
             <!-- @include('auth.partials.copy') -->
         </form>
