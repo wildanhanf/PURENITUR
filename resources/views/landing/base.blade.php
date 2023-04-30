@@ -6,10 +6,14 @@
 </head>
 
 <body>
+    <header class="sticky top-0 z-50">
+        @include('landing.navbar')
+    </header>
+    <div>
+        @yield('landing.content')
+    </div>
     <div>
         @include('landing.footer')
     </div>
 </body>
-<script src="js/index.js"></script>
-
 </html>
