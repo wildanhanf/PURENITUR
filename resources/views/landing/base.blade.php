@@ -8,7 +8,10 @@
     <header>
         @include('landing.navbar')
     </header>
-    <div class="mt-24">
+    <div>
+        @include('landing.search')
+    </div>
+    <div class="lg:mt-4 2xl:mt-8">
         @yield('landing.content')
     </div>
     <div>
