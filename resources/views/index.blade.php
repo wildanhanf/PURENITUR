@@ -3,7 +3,7 @@ Home
 @endsection
 
 @extends('landing.base')
-@section('landing.content')
+@section('content')
 <section id="welcome" class="lg:mx-64 md:mx-48 sm:mx-24 mx-12">
     <div class="container flex flex-wrap">
         <div class="md:w-1/2 py-8 md:py-10 2xl:py-16 px-4">

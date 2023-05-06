@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\CatalogComponent;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,8 @@ use App\Http\Livewire\CatalogComponent;
 // });
 
 Route::get('/catalog', CatalogComponent::class)->name('catalog');
+
+Route::get('/cart', [HomeController::class, 'shoppingCart'])->name('cart');
 
 Route::group(['namespace' => 'App\Http\Controllers'], function () {
     /**

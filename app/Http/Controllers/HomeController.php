@@ -15,4 +15,9 @@ class HomeController extends Controller
             ->get();
         return view('index', ['data' => $data_catalog]);
     }
+
+    public function shoppingCart()
+    {
+        return view('store.cart');
+    }
 }
