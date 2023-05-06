@@ -25,27 +25,27 @@ Home
             <div class="grid grid-cols-2 2xl:grid-cols-3 gap-4 mx-auto">
                 <div class="relative">
                     <img src="{{asset('img/kursi.png')}}" alt="" class="hover:blur-sm">
-                    <h3 class="absolute text-2xl text-white font-bold top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">Kursi</h3>
+                    <h3 class="absolute text-2xl text-slate-100 font-bold top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">Kursi</h3>
                 </div>
                 <div class="relative">
                     <img src="{{asset('img/meja.png')}}" alt="" class="hover:blur-sm">
-                    <h3 class="absolute text-2xl text-white font-bold top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">Meja</h3>
+                    <h3 class="absolute text-2xl text-slate-100 font-bold top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">Meja</h3>
                 </div>
                 <div class="relative">
                     <img src="{{asset('img/lemari.png')}}" alt="" class="hover:blur-sm">
-                    <h3 class="absolute text-2xl text-white font-bold top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">Lemari</h3>
+                    <h3 class="absolute text-2xl text-slate-100 font-bold top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">Lemari</h3>
                 </div>
                 <div class="relative">
                     <img src="{{asset('img/sofa.png')}}" alt="" class="hover:blur-sm">
-                    <h3 class="absolute text-2xl text-white font-bold top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">Sofa</h3>
+                    <h3 class="absolute text-2xl text-slate-100 font-bold top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">Sofa</h3>
                 </div>
                 <div class="relative">
                     <img src="{{asset('img/rak.png')}}" alt="" class="hover:blur-sm">
-                    <h3 class="absolute text-2xl text-white font-bold top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">Rak</h3>
+                    <h3 class="absolute text-2xl text-slate-100 font-bold top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">Rak</h3>
                 </div>
                 <div class="relative">
                     <img src="{{asset('img/kasur.png')}}" alt="" class="hover:blur-sm">
-                    <h3 class="absolute text-2xl text-white font-bold top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">Kasur</h3>
+                    <h3 class="absolute text-2xl text-slate-100 font-bold top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">Kasur</h3>
                 </div>
             </div>
         </div>
