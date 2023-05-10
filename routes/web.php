@@ -20,7 +20,7 @@ use App\Http\Controllers\HomeController;
 // });
 
 Route::get('/catalog', CatalogComponent::class)->name('catalog');
-Route::get('/productDetail', [HomeController::class,'productDetail'])->name('productDetail');
+Route::get('/productDetail', [HomeController::class, 'productDetail'])->name('productDetail');
 
 Route::group(['namespace' => 'App\Http\Controllers'], function () {
     /**

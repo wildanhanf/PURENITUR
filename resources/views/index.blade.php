@@ -57,9 +57,9 @@ Home
     </div>
     <div class="container product">
         <!-- Carousel wrapper -->
-        <div class="row">
+        <div class="columns-5">
             <!-- Product -->
-            @foreach ($data as $catalog) <div class="col-2 m-3">
+            @foreach ($data as $catalog) <div class="">
                 <div class="bg-white shadow-lg rounded-lg w-56  mx-4">
                     <a class="flex justify-center p-3">
                         <img src="{{ $catalog->image }}" alt="" class="w-[207px] h-[222px]">
