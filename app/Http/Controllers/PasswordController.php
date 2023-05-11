@@ -18,6 +18,8 @@ class PasswordController extends Controller
         //     bcrypt($request->password),
         //     bcrypt($request->password_confirmation),
         // ]);
+
+        // INI BELOM BISA KEUPDATE
         $validated = $request->validateWithBag('updatePassword', [
             'current_password' => ['required', 'current_password'],
             'password' => ['required', Password::defaults(), 'confirmed'],
