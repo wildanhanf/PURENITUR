@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\CatalogComponent;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,5 +48,13 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
          * Logout Routes
          */
         Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
+        Route::get('/profile', 'ProfileController@edit')->name('profile.edit');
+        Route::patch('/profile', 'ProfileController@update')->name('profile.update');
+        Route::patch('/password', 'PasswordController@update')->name('password.update');
     });
+});
+
+Route::middleware('auth')->group(function () {
+
+    // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
