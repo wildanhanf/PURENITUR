@@ -1,8 +1,3 @@
-<!-- <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Profile') }}
-        </h2>
-    </x-slot> -->
 @extends('landing.base')
 @section('landing.content')
 <div class="py-12">
@@ -25,52 +20,64 @@
                         @method('patch')
 
                         <div>
-                            <!-- <x-input-label for="id" :value="__('id')" /> -->
-                            <x-text-input id="id" name="id" type="hidden" class="mt-1 block w-full" :value="old('id', $user->id)" required autofocus autocomplete="id" />
-                            <x-input-error class="mt-2" :messages="$errors->get('id')" />
+                            <input id="id" type="hidden" name="id" value="{{ old('id', $user->id) }}" required readonly>
                         </div>
 
-                        <div>
-                            <x-input-label for="email" :value="__('Email')" />
-                            <x-text-input disabled id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
-                            <x-input-error class="mt-2" :messages="$errors->get('email')" />
+
+                        <div class="mb-1.5 text-xs text-left">
+                            <label for="email" style="color:white">Email</label>
+                            <input id="email" type="email" class="border-solid border-2 rounded border-slate-300 w-full" name="email" value="{{ old('email', $user->email) }}" required readonly>
+                            @if ($errors->has('email'))
+                            <span class="text-danger text-left">{{ $errors->first('email') }}</span>
+                            @endif
                         </div>
 
-                        <div>
-                            <x-input-label for="username" :value="__('Username')" />
-                            <x-text-input id="username" name="username" type="text" class="mt-1 block w-full" :value="old('username', $user->username)" required autofocus autocomplete="username" />
-                            <x-input-error class="mt-2" :messages="$errors->get('username')" />
+                        <div class="mb-1.5 text-xs text-left">
+                            <label for="username" style="color:white">Username</label>
+                            <input id="username" type="text" class="border-solid border-2 rounded border-slate-300 w-full" name="username" value="{{ old('username', $user->username) }}" required>
+                            @if ($errors->has('username'))
+                            <span class="text-danger text-left">{{ $errors->first('username') }}</span>
+                            @endif
                         </div>
 
-                        <div>
-                            <x-input-label for="first_name" :value="__('First Name')" />
-                            <x-text-input id="first_name" name="first_name" type="text" class="mt-1 block w-full" :value="old('first_name', $user->first_name)" required autofocus autocomplete="first_name" />
-                            <x-input-error class="mt-2" :messages="$errors->get('first_name')" />
+                        <div class="mb-1.5 text-xs text-left">
+                            <label for="first_name" style="color:white">First Name</label>
+                            <input id="first_name" type="text" class="border-solid border-2 rounded border-slate-300 w-full" name="first_name" value="{{ old('first_name', $user->first_name) }}" required>
+                            @if ($errors->has('first_name'))
+                            <span class="text-danger text-left">{{ $errors->first('first_name') }}</span>
+                            @endif
                         </div>
 
-                        <div>
-                            <x-input-label for="last_name" :value="__('Last Name')" />
-                            <x-text-input id="last_name" name="last_name" type="text" class="mt-1 block w-full" :value="old('last_name', $user->last_name)" required autofocus autocomplete="last_name" />
-                            <x-input-error class="mt-2" :messages="$errors->get('last_name')" />
+                        <div class="mb-1.5 text-xs text-left">
+                            <label for="last_name" style="color:white">Last Name</label>
+                            <input id="last_name" type="text" class="border-solid border-2 rounded border-slate-300 w-full" name="last_name" value="{{ old('last_name', $user->last_name) }}" required>
+                            @if ($errors->has('last_name'))
+                            <span class="text-danger text-left">{{ $errors->first('last_name') }}</span>
+                            @endif
                         </div>
 
-                        <div>
-                            <x-input-label for="gender" :value="__('Gender')" />
-                            <x-text-input disabled id="gender" name="gender" type="text" class="mt-1 block w-10 text-center" :value="old('gender', $user->gender)" required autofocus autocomplete="gender" />
-                            <x-input-error class="mt-2" :messages="$errors->get('gender')" />
+                        <div class="mb-1.5 text-xs text-left">
+                            <label for="gender" style="color:white">Gender<br></label>
+                            <input id="gender" type="text" class="border-solid border-2 rounded border-slate-300 w-10 text-center" name="gender" value="{{ old('gender', $user->gender) }}" required readonly>
+                            @if ($errors->has('gender'))
+                            <span class="text-danger text-left">{{ $errors->first('gender') }}</span>
+                            @endif
                         </div>
 
-                        <div>
-                            <x-input-label for="telephone" :value="__('Telephone')" />
-                            <x-text-input id="telephone" name="telephone" type="number" class="mt-1 block w-full" :value="old('telephone', $user->telephone)" required autofocus autocomplete="telephone" />
-                            <x-input-error class="mt-2" :messages="$errors->get('telephone')" />
+                        <div class="mb-1.5 text-xs text-left">
+                            <label for="telephone" style="color:white">Telephone</label>
+                            <input id="telephone" type="number" class="border-solid border-2 rounded border-slate-300 w-full" name="telephone" value="{{ old('telephone', $user->telephone) }}" required>
+                            @if ($errors->has('telephone'))
+                            <span class="text-danger text-left">{{ $errors->first('telephone') }}</span>
+                            @endif
                         </div>
 
                         <div class="flex items-center gap-4">
-                            <x-primary-button>{{ __('Save') }}</x-primary-button>
-
-                            @if (session('status') === 'profile-updated')
-                            <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)" class="text-sm text-gray-600 dark:text-gray-400">{{ __('Saved.') }}</p>
+                            <button type="submit" class="inline-flex items-center px-4 py-2 bg-gray-800 dark:bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 uppercase tracking-widest hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 dark:focus:bg-white active:bg-gray-900 dark:active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
+                                {{ __('Save') }}
+                            </button>
+                            @if (session('status')==='profile-updated' )
+                            <p class="text-sm text-gray-600 dark:text-gray-400">{{ __('Saved.') }}</p>
                             @endif
                         </div>
                     </form>
@@ -95,29 +102,37 @@
                         @csrf
                         @method('patch')
 
-                        <div>
-                            <x-input-label for="current_password" :value="__('Current Password')" />
-                            <x-text-input id="current_password" name="current_password" type="password" class="mt-1 block w-full" autocomplete="current-password" />
-                            <x-input-error :messages="$errors->updatePassword->get('current_password')" class="mt-2" />
+                        <div class="mb-1.5 text-xs text-left">
+                            <label for="current_password" style="color:white">Current Password</label>
+                            <input id="current_password" type="password" class="border-solid border-2 rounded border-slate-300 w-full" name="current_password" autocomplete="current-password">
+                            @if ($errors->has('current_password'))
+                            <span class="text-danger text-left">{{ $errors->first('current_password') }}</span>
+                            @endif
                         </div>
 
-                        <div>
-                            <x-input-label for="password" :value="__('New Password')" />
-                            <x-text-input id="password" name="password" type="password" class="mt-1 block w-full" autocomplete="new-password" />
-                            <x-input-error :messages="$errors->updatePassword->get('password')" class="mt-2" />
+                        <div class="mb-1.5 text-xs text-left">
+                            <label for="password" style="color:white">New Password</label>
+                            <input id="password" type="password" class="border-solid border-2 rounded border-slate-300 w-full" name="password" autocomplete="password">
+                            @if ($errors->has('password'))
+                            <span class="text-danger text-left">{{ $errors->first('password') }}</span>
+                            @endif
                         </div>
 
-                        <div>
-                            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-                            <x-text-input id="password_confirmation" name="password_confirmation" type="password" class="mt-1 block w-full" autocomplete="new-password" />
-                            <x-input-error :messages="$errors->updatePassword->get('password_confirmation')" class="mt-2" />
+                        <div class="mb-1.5 text-xs text-left">
+                            <label for="password_confirmation" style="color:white">Confirm Password</label>
+                            <input id="password_confirmation" type="password" class="border-solid border-2 rounded border-slate-300 w-full" name="password_confirmation" autocomplete="password_confirmation">
+                            @if ($errors->has('password_confirmation'))
+                            <span class="text-danger text-left">{{ $errors->first('password_confirmation') }}</span>
+                            @endif
                         </div>
 
                         <div class="flex items-center gap-4">
-                            <x-primary-button>{{ __('Save') }}</x-primary-button>
+                            <button type="submit" class="inline-flex items-center px-4 py-2 bg-gray-800 dark:bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 uppercase tracking-widest hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 dark:focus:bg-white active:bg-gray-900 dark:active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
+                                {{ __('Save') }}
+                            </button>
 
                             @if (session('status') === 'password-updated')
-                            <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)" class="text-sm text-gray-600 dark:text-gray-400">{{ __('Saved.') }}</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">{{ __('Saved.') }}</p>
                             @endif
                         </div>
                     </form>
