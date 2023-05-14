@@ -1,7 +1,7 @@
 @extends('landing.base')
 @section('landing.content')
 <div class="mt-8">
-    <div class="w-full mx-auto sm:px-6 lg:px-8 space-y-6">
+    <div class="w-full lg:ml-52 sm:px-6 lg:px-8 space-y-6 max-w-6xl">
         <div class="p-4 sm:p-8 bg-white shadow rounded-lg mx-3 border-2 border-slate-800 border-solid lg:flex">
             <div class="w-full lg:flex mb-8">
                 <section class="w-full lg:w-2/3 mb-3">
