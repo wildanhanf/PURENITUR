@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const colors = require('tailwindcss/colors')
 module.exports = {
   content: [
     "./resources/**/*.blade.php",
@@ -6,8 +7,11 @@ module.exports = {
     "./resources/**/*.vue",
   ],
   theme: {
+    fontFamily: {
+      'montserrat' : ['Montserrat', 'sans-serif']
+    },
     colors: {
-      white: "#FFF",
+      ...colors,
       'yellow' : '#FDE047',
       'primary-1' : '#079992',
       'primary-2' : '#38ADA9',
@@ -29,9 +33,6 @@ module.exports = {
     extend: {
       backgroundImage: {
         'register-login': "url('/img/register-login.png')",
-      },
-      fontFamily: {
-        'montserrat' : ['Montserrat', 'sans-serif']
       },
     },
   },

@@ -34,11 +34,12 @@ Cart
     </div>
 
     <div class="container mx-auto flex flex-row px-20">
-        <div class="flex flex-col items-center bg-white rounded-lg shadow md:flex-row md:max-w-xl basis-1/2">
-            <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="/docs/images/blog/image-4.jpg" alt="">
+    <div class="flex flex-col items-center bg-white rounded-lg shadow md:flex-row md:max-w-xl basis-1/2 h-56 md:h-auto p-4 md:p-6">
+            <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg p-4" src="/img/Logo.png" alt="">
             <div class="flex flex-col justify-between p-4 leading-normal">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">Noteworthy technology acquisitions 2021</h5>
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">Kasur Pitung</h5>
                 <p class="mb-3 font-normal text-gray-700">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                <span><p class="font-bold">RP 150.000</p></span>
             </div>
         </div>
 

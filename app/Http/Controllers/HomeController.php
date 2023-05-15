@@ -20,4 +20,9 @@ class HomeController extends Controller
     {
         return view('store.cart');
     }
+    
+    public function productDetail()
+    {
+        return view('auth.productDetail');
+    }
 }
