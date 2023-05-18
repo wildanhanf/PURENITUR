@@ -22,6 +22,7 @@ use App\Http\Controllers\ProfileController;
 
 Route::get('/catalog', CatalogComponent::class)->name('catalog');
 Route::get('/productDetail', [HomeController::class, 'productDetail'])->name('productDetail');
+Route::get('/shipment', [HomeController::class, 'shipment'])->name('shipment');
 
 Route::group(['namespace' => 'App\Http\Controllers'], function () {
     /**

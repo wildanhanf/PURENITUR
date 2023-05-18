@@ -83,7 +83,7 @@
         </div>
         <div class="container product flex justify-center">
             <!-- Carousel wrapper -->
-            <div class="columns-1 lg:columns-3 xl:columns-5">
+            <div class="columns-1 lg:columns-3 xl:columns-6">
                 <!-- Product -->
                 @foreach ($data as $catalog)
                     <div class="mb-1.5">
