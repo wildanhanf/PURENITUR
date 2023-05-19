@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -21,8 +21,15 @@ class HomeController extends Controller
         return view('store.cart');
     }
     
-    public function productDetail()
+    public function productDetail(Request $request)
     {
-        return view('auth.productDetail');
+        $id_one_product = $request->id_per_product;
+        $data_product = Product::select('*')
+            ->where('id', '=', $id_one_product)
+            ->get();
+        // dd($data_product);
+        return view('auth.productDetail', [
+            'data_selected_product' => $data_product,
+        ]);
     }
 }

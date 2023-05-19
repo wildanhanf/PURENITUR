@@ -4,3 +4,4 @@
 @vite('resources/css/app.css')
 <title>@yield('title')</title>
 <link rel="shortcut icon" href="/img/fav-logo.png">
+<link rel="stylesheet" href="/css/app.css">

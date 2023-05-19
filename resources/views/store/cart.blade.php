@@ -28,22 +28,70 @@ Cart
             </li>
         </ol>
     </div>
-
-    <div class="flex flex-start ml-20 my-16">
-        <h3 class="text-2xl font-semibold">Shopping Cart</h3>
-    </div>
-
-    <div class="container mx-auto flex flex-row px-20">
-    <div class="flex flex-col items-center bg-white rounded-lg shadow md:flex-row md:max-w-xl basis-1/2 h-56 md:h-auto p-4 md:p-6">
-            <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg p-4" src="/img/Logo.png" alt="">
-            <div class="flex flex-col justify-between p-4 leading-normal">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">Kasur Pitung</h5>
-                <p class="mb-3 font-normal text-gray-700">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                <span><p class="font-bold">RP 150.000</p></span>
+    <div class="h-screen pt-20">
+        <h1 class="mb-10 pl-20 text-2xl font-bold">Shopping Cart</h1>
+        <div class="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
+            <div class="rounded-lg md:w-2/3">
+                <div class="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
+                    <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="product-image" class="w-full rounded-lg sm:w-40" />
+                    <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
+                        <div class="mt-5 sm:mt-0">
+                            <h2 class="text-lg font-bold text-gray-900">King Coil Bed</h2>
+                            <p class="mt-1 text-xs text-gray-700">Empuk bet coy asli dah.</p>
+                        </div>
+                        <div class="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
+                            <div class="flex items-center border-gray-100">
+                                <span class="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-primary-1 hover:text-blue-50"> - </span>
+                                <input class="h-8 w-8 border bg-white text-center text-xs outline-none" type="number" value="2" min="1" />
+                                <span class="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-primary-1 hover:text-blue-50"> + </span>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <p class="mt-8 text-sm font-bold">Rp 259.000</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
+                    <img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="product-image" class="w-full rounded-lg sm:w-40" />
+                    <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
+                        <div class="mt-5 sm:mt-0">
+                            <h2 class="text-lg font-bold text-gray-900">Royal Highness</h2>
+                            <p class="mt-1 mr-1 text-xs text-gray-700">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab esse pariatur doloribus ea. Dolorem voluptates incidunt ea quisquam ipsa distinctio porro officiis temporibus officia eum tenetur, quod perspiciatis doloribus ab?</p>
+                        </div>
+                        <div class="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
+                            <div class="flex items-center border-gray-100">
+                                <span class="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-primary-1 hover:text-blue-50"> - </span>
+                                <input class="h-8 w-8 border bg-white text-center text-xs outline-none" type="number" value="2" min="1" />
+                                <span class="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-primary-1 hover:text-blue-50"> + </span>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <p class="mt-8 text-sm font-bold">Rp 259.000</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Sub total -->
+            <div class="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
+                <div class="mb-2 flex justify-between">
+                    <p class="text-gray-700">Subtotal</p>
+                    <p class="text-gray-700">$129.99</p>
+                </div>
+                <div class="flex justify-between">
+                    <p class="text-gray-700">Shipping</p>
+                    <p class="text-gray-700">$4.99</p>
+                </div>
+                <hr class="my-4" />
+                <div class="flex justify-between">
+                    <p class="text-lg font-bold">Total</p>
+                    <div class="">
+                        <p class="mb-1 text-lg font-bold">$134.98 USD</p>
+                        <p class="text-sm text-gray-700">including VAT</p>
+                    </div>
+                </div>
+                <button class="mt-6 w-full rounded-md bg-primary-1 py-1.5 font-medium text-white hover:bg-primary-2">Order</button>
             </div>
         </div>
-
-        <div class="basis-1/4 mx-auto">02</div>
     </div>
 </section>
 @endsection

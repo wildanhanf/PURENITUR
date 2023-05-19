@@ -4,8 +4,8 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <div class="h-screen justify-center flex items-center">
     <div class="container">
-    <img src="/img/logo.png" class="mx-auto mb-3 w-[108px]" alt="PURENITUR Logo">
-    <h1 class="text-lg font-semibold mb-3 text-center">Good to see you again</h1>
+        <img src="/img/logo.png" class="mx-auto mb-3 w-[108px]" alt="PURENITUR Logo">
+        <h1 class="text-lg font-semibold mb-3 text-center">Good to see you again</h1>
         <form method="post" action="{{ route('login.perform') }}" class="px-7 py-7 shadow-lg rounded-md max-w-lg items-center mx-auto">
 
             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
@@ -33,6 +33,10 @@
             </div>
 
             <button class="w-[270px] h-[35px] bg-cyan-400 rounded-full mx-auto text-white" type="submit">Sign In</button>
+
+            <div>
+                <a href="{{ route('register.show') }}">Register</a>
+            </div>
 
             <!-- @include('auth.partials.copy') -->
         </form>
