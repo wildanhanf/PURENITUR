@@ -25,6 +25,7 @@ Route::get('/productDetail', [HomeController::class, 'productDetail'])->name('pr
 Route::get('/shipment', [HomeController::class, 'shipment'])->name('shipment');
 
 Route::get('/cart', [HomeController::class, 'shoppingCart'])->name('cart');
+Route::get('/payment', [HomeController::class, 'payment'])->name('payment');
 
 Route::group(['namespace' => 'App\Http\Controllers'], function () {
     /**

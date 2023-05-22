@@ -24,7 +24,12 @@ class HomeController extends Controller
     {
         return view('store.cart');
     }
-    
+
+    public function payment()
+    {
+        return view('store.payment');
+    }
+
     public function productDetail(Request $request)
     {
         $id_one_product = $request->id_per_product;

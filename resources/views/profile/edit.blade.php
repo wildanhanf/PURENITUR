@@ -1,5 +1,5 @@
 @extends('landing.base')
-@section('landing.content')
+@section('content')
 <div class="mt-8">
     <div class="w-full lg:ml-52 sm:px-6 lg:px-8 space-y-6 max-w-6xl">
         <div class="p-4 sm:p-8 bg-white shadow rounded-lg mx-3 border-2 border-slate-800 border-solid lg:flex">
@@ -73,7 +73,7 @@
                         </div>
 
                         <div class="flex flex-row-reverse items-center">
-                            <button type="submit" class="inline-flex items-center px-4 py-2 bg-primary-one border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 dark:focus:bg-white active:bg-gray-900 dark:active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
+                            <button type="submit" class="inline-flex items-center px-4 py-2 bg-primary-1 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 dark:focus:bg-white active:bg-gray-900 dark:active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
                                 {{ __('Save') }}
                             </button>
                             @if (session('status')==='profile-updated' )
@@ -83,8 +83,8 @@
                     </form>
                 </section>
                 <div class="w-full lg:w-1/3 items-center justify-center ">
-                    <div class="w-72 h-14 bg-primary-one rounded-lg text-center text-white text-md p-3 font-base mb-6 shadow-lg mx-auto">Your Shipment</div>
-                    <div class="w-72 h-14 bg-primary-one rounded-lg text-center text-white text-md p-3 font-base shadow-lg mx-auto">Your Payment</div>
+                    <div class="w-72 h-14 bg-primary-1 rounded-lg text-center text-white text-md p-3 font-base mb-6 shadow-lg mx-auto">Your Shipment</div>
+                    <div class="w-72 h-14 bg-primary-1 rounded-lg text-center text-white text-md p-3 font-base shadow-lg mx-auto">Your Payment</div>
                 </div>
             </div>
         </div>
@@ -131,7 +131,7 @@
                         </div>
 
                         <div class="flex items-center gap-4">
-                            <button type="submit" class="inline-flex items-center px-4 py-2 bg-primary-one border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 dark:focus:bg-white active:bg-gray-900 dark:active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
+                            <button type="submit" class="inline-flex items-center px-4 py-2 bg-primary-1 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 dark:focus:bg-white active:bg-gray-900 dark:active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
                                 {{ __('Save') }}
                             </button>
 
@@ -145,7 +145,7 @@
         </div>
 
         <div class="flex items-center mx-4">
-            <button class="text-white bg-primary-one hover:bg-gray-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><a href="{{ route('logout.perform') }}">{{ __('Logout') }}</a></button>
+            <button class="text-white bg-primary-1 hover:bg-gray-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><a href="{{ route('logout.perform') }}">{{ __('Logout') }}</a></button>
         </div>
     </div>
 </div>
