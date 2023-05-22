@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\CatalogComponent;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Livewire\CartComponent;
+use App\Http\Livewire\ProductDetailComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,10 +23,14 @@ use App\Http\Controllers\ProfileController;
 // });
 
 Route::get('/catalog', CatalogComponent::class)->name('catalog');
-Route::get('/productDetail', [HomeController::class, 'productDetail'])->name('productDetail');
+Route::get('/product-detail', [ProductDetailComponent::class, 'callPage'])->name('product-detail');
+Route::get('/productDetails', [HomeController::class, 'productDetail'])->name('productDetails');
 Route::get('/shipment', [HomeController::class, 'shipment'])->name('shipment');
 
-Route::get('/cart', [HomeController::class, 'shoppingCart'])->name('cart');
+Route::get('/cart', CartComponent::class)->name('cart');
+Route::get('/dec-qty', [CartComponent::class, 'decreaseQuantity'])->name('dec-qty');
+Route::get('/add-qty', [CartComponent::class, 'increaseQuantity'])->name('add-qty');
+Route::get('/carts', [ProductDetailComponent::class, 'store'])->name('carts');
 Route::get('/payment', [HomeController::class, 'payment'])->name('payment');
 
 Route::group(['namespace' => 'App\Http\Controllers'], function () {

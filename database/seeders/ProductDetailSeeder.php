@@ -4,9 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Product;
+use App\Models\ProductDetail;
 
-class ProductSeeder extends Seeder
+class ProductDetailSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,21 +15,21 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        Product::truncate();
+        ProductDetail::truncate();
         $heading = true;
-        $input_file = fopen(base_path("database/data/datafurniture.csv"), "r");
+        $input_file = fopen(base_path("database/data/dataproductdetail.csv"), "r");
         while (($record = fgetcsv($input_file, null, ",")) !== FALSE) {
             if (!$heading) {
                 $product = array(
                     "name_product" => $record['0'],
-                    "category" => $record['1'],
-                    "sku" => $record['2'],
-                    "price" => $record['3'],
-                    "image" => $record['4'],
-                    "rating" => $record['5'],
+                    "sku" => $record['1'],
+                    "feature_1" => $record['2'],
+                    "feature_2" => $record['3'],
+                    "feature_3" => $record['4'],
+                    "feature_4" => $record['5'],
                 );
                 // dd($product);
-                Product::create($product);
+                ProductDetail::create($product);
             }
             $heading = false;
         }
