@@ -88,6 +88,8 @@ Cart
                 </div>
 
                 <!-- Sub total -->
+                @if (Cart::count() > 0)
+
                 <div class="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
                     <div class="mb-2 flex justify-between">
                         <p class="text-gray-700">Subtotal</p>
@@ -105,8 +107,26 @@ Cart
                             <p class="text-sm text-gray-700">Sudah Termasuk Pajak</p>
                         </div>
                     </div>
-                    <button class="mt-6 w-full rounded-md bg-primary-1 py-1.5 font-medium text-white hover:bg-primary-2">Order</button>
+
+                    <form action="/checkout" method="GET">
+                        @csrf
+
+                        <input type="hidden" name="cart" value="{{ Cart::content() }}">
+                        <input type="hidden" name="total_price" value="{{ Cart::total() }}">
+
+                        <button type="submit" class="mt-6 w-full rounded-md bg-primary-1 py-1.5 font-medium text-white hover:bg-primary-2">Order</button>
+                    </form>
                 </div>
+                @else
+                <div class="mt-10 mb-10 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
+                    <div class="mb-2 text-center">
+                        <p class="text-gray-700">Shopping Cart masih Kosong. <br>Yuk Belanja Dulu!</p>
+                    </div>
+                    <a href="{{ 'catalog' }}">
+                        <button class="w-full rounded-md bg-primary-1 py-1.5 font-medium text-white hover:bg-primary-2">Go to Catalog</button>
+                    </a>
+                </div>
+                @endif
             </div>
         </div>
     </section>

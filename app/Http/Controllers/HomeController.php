@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\View\View;
 
 class HomeController extends Controller
 {
@@ -18,7 +20,7 @@ class HomeController extends Controller
     public function shipment()
     {
         $data_catalog = Product::inRandomOrder()->limit(5)->get();
-        return view('auth.shipment', ['data' => $data_catalog,]);
+        return view('auth.shipment', ['data' => $data_catalog]);
     }
 
     public function shoppingCart()
@@ -26,9 +28,64 @@ class HomeController extends Controller
         return view('store.cart');
     }
 
-    public function payment()
+    public function create_order(Request $request)
     {
-        return view('store.payment');
+        // dd(
+        //     $request->id,
+        //     $request->cart,
+        //     $request->total_price,
+        //     $request->discount_id,
+        //     $request->final_price,
+        //     $request->payment_method,
+        // );
+
+        $json = json_decode($request->get('json'));
+
+        $str1 = $request->total_price;
+        $str2 = $request->final_price;
+        $val1 = (float) str_replace(',', '', $str1);
+        $val2 = (float) str_replace(',', '', $str2);
+
+        // dd($val1);
+        $createOrder = array(
+            "user_id" => $request->id,
+            "cart" => $request->cart,
+            "price_total" => $val1,
+            "discount_id" => $request->discount_id,
+            "final_price" => $val2,
+            "payment_type" => $request->payment_method,
+        );
+        Order::create($createOrder);
+
+        return redirect('/payment');
+    }
+
+    public function payment(Request $request)
+    {
+        $data_orders = Order::select('*')
+            ->where('user_id', '=', $request->user()->id)
+            ->get();
+
+        // dd($data_orders);
+
+        return view('store.payment', ['data_order' => $data_orders]);
+    }
+
+    public function checkout(Request $request): View
+    {
+        // dd(
+        //     $request->id,
+        //     $request->cart,
+        //     $request->total_price,
+        //     $request->discount_id,
+        //     $request->final_price,
+        //     $request->payment_method,
+        // );
+        return view('store.checkout', [
+            'cart' => $request->cart,
+            'total_price' => $request->total_price,
+            'user' => $request->user(),
+        ]);
     }
 
     public function productDetail(Request $request)

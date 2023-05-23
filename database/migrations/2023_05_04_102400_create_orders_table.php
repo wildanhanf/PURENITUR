@@ -18,14 +18,14 @@ return new class extends Migration
             $table->integer('user_id');
             $table->json('cart');
             $table->decimal('price_total', 10);
-            $table->integer('discount_id');
+            $table->integer('discount_id')->nullable();
             $table->decimal('final_price', 10);
-            $table->integer('transaction_id');
+            $table->integer('transaction_id')->nullable();
             $table->string('payment_type');
-            $table->string('status_payment');
-            $table->string('image_payment');
-            $table->integer('shipment_id');
-            $table->string('shipment_status');
+            $table->string('status_payment')->default("WAITING FOR PAYMENT");
+            $table->string('image_payment')->nullable();
+            $table->integer('shipment_id')->nullable();
+            $table->string('shipment_status')->nullable();
             $table->timestamps();
         });
     }

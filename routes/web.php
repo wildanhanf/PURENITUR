@@ -26,12 +26,14 @@ Route::get('/catalog', CatalogComponent::class)->name('catalog');
 Route::get('/product-detail', [ProductDetailComponent::class, 'callPage'])->name('product-detail');
 Route::get('/productDetails', [HomeController::class, 'productDetail'])->name('productDetails');
 Route::get('/shipment', [HomeController::class, 'shipment'])->name('shipment');
+Route::get('/checkout', [HomeController::class, 'checkout'])->name('checkout');
 
 Route::get('/cart', CartComponent::class)->name('cart');
 Route::get('/dec-qty', [CartComponent::class, 'decreaseQuantity'])->name('dec-qty');
 Route::get('/add-qty', [CartComponent::class, 'increaseQuantity'])->name('add-qty');
 Route::get('/carts', [ProductDetailComponent::class, 'store'])->name('carts');
 Route::get('/payment', [HomeController::class, 'payment'])->name('payment');
+Route::get('/payments', [HomeController::class, 'create_order'])->name('payments');
 
 Route::group(['namespace' => 'App\Http\Controllers'], function () {
     /**
