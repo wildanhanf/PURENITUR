@@ -51,44 +51,23 @@ Payment
 
 <section>
     <div class="container d-flex justify-content-center mt-5">
-        <h1 class="mb-10 pl-20 text-2xl font-bold">Checkout</h1>
+        <h1 class="mb-10 pl-20 text-2xl font-bold">Checkout Details</h1>
         <div class="card">
-            <form method="GET" action="/payments">
+            <form method="GET" action="/checkouts">
                 <div>
                     <!-- <div class="d-flex pt-3 pl-3">
                         {{-- <div><img src="https://img.icons8.com/ios-filled/50/000000/visa.png" width="60" height="80" /></div> --}}
                     </div> -->
 
                     <div>
-                        <input id="id" type="hidden" name="id" value="{{ old('id', $user->id) }}" required readonly>
-                        <input id="cart" type="hidden" name="cart" value="{{ $cart }}" required readonly>
-                    </div>
-
-                    <div class="second pl-2 d-flex py-2">
-                        <div class="form-check">
-                        </div>
-
-                        <div class="border-left pl-2"><span class="head">Email</span>
-                            <div class="d-flex"><span>{{ old('email', $user->email) }}</span></div>
-                        </div>
-                    </div>
-
-                    <div class="second pl-2 d-flex py-2">
-                        <div class="form-check">
-                        </div>
-
-                        <div class="border-left pl-2"><span class="head">Username</span>
-                            <div class="d-flex"><span>{{ old('username', $user->username) }}</span></div>
-                        </div>
-                    </div>
-
-                    <div class="second pl-2 d-flex py-2">
-                        <div class="form-check">
-                        </div>
-
-                        <div class="border-left pl-2"><span class="head">Full Name</span>
-                            <div class="d-flex"><span>{{ old('first_name', $user->first_name) }} {{ old('last_name', $user->last_name) }}</span></div>
-                        </div>
+                        <p class="head">Order Summary</p>
+                        @foreach($json as $item)
+                        <p>qty : {{ $item->qty }}</p>
+                        <p>name : {{ $item->model->name_product }}</p>
+                        <p>sku : {{ $item->model->sku }}</p>
+                        <p>price : {{ $item->model->price }}</p>
+                        <img src="{{ $item->model->image }}" style="width:50px; height:50px">
+                        @endforeach
                     </div>
 
                     <div class="second pl-2 d-flex py-2">
@@ -100,6 +79,11 @@ Payment
                         </div>
 
                         <input id="total_price" type="hidden" name="total_price" value="{{ $total_price }}" required readonly>
+                    </div>
+
+                    <div>
+                        <input id="id" type="hidden" name="id" value="{{ old('id', $user->id) }}" required readonly>
+                        <input id="cart" type="hidden" name="cart" value="{{ $cart }}" required readonly>
                     </div>
 
                     <div class="second pl-2 d-flex py-2">
@@ -123,17 +107,6 @@ Payment
                         <input id="final_price" type="hidden" name="final_price" value="{{ $total_price }}" required readonly>
                     </div>
 
-                    <!-- <div class="second pl-2 d-flex py-2">
-                        <div class="form-check">
-                        </div>
-
-                        <div class="border-left pl-2"><span class="head">Cart</span>
-                            <div class="d-flex"><span>{{ $cart }}</span></div>
-                        </div>
-
-                        <input id="cart" type="hidden" name="cart" value="{{ $cart }}" required readonly>
-                    </div> -->
-
                     <div class="second pl-2 d-flex py-2">
                         <div class="form-check">
                         </div>
@@ -142,6 +115,17 @@ Payment
                             <p class="head">Select Payment Method :</p>
                             <p>Untuk Sekarang, Payment Method Hanya Transfer</p>
                             <input id="payment_method" type="hidden" name="payment_method" value="Bank Transfer BCA" required readonly>
+                        </div>
+                    </div>
+
+                    <div class="second pl-2 d-flex py-2">
+                        <div class="form-check">
+                        </div>
+
+                        <div class="border-left pl-2"><span class="head">Alamat Pengiriman</span>
+                            <div class="d-flex">
+                                <input type="text" value="{{ old('address', $user->address) }}" style="border:1px solid black"></input>
+                            </div>
                         </div>
                     </div>
 

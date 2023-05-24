@@ -7,6 +7,7 @@ use App\Models\Order;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\View\View;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -20,7 +21,16 @@ class HomeController extends Controller
     public function shipment()
     {
         $data_catalog = Product::inRandomOrder()->limit(5)->get();
-        return view('auth.shipment', ['data' => $data_catalog]);
+        $data_shipment = Order::select('*')
+            ->where('user_id', '=', auth()->user()->id)
+            ->get();
+
+        // dd($data_shipment);
+
+        return view('auth.shipment', [
+            'data' => $data_catalog,
+            'shipment' => $data_shipment,
+        ]);
     }
 
     public function shoppingCart()
@@ -30,15 +40,6 @@ class HomeController extends Controller
 
     public function create_order(Request $request)
     {
-        // dd(
-        //     $request->id,
-        //     $request->cart,
-        //     $request->total_price,
-        //     $request->discount_id,
-        //     $request->final_price,
-        //     $request->payment_method,
-        // );
-
         $json = json_decode($request->get('json'));
 
         $str1 = $request->total_price;
@@ -46,7 +47,6 @@ class HomeController extends Controller
         $val1 = (float) str_replace(',', '', $str1);
         $val2 = (float) str_replace(',', '', $str2);
 
-        // dd($val1);
         $createOrder = array(
             "user_id" => $request->id,
             "cart" => $request->cart,
@@ -57,6 +57,23 @@ class HomeController extends Controller
         );
         Order::create($createOrder);
 
+        Cart::destroy();
+
+        return redirect('/payment');
+    }
+
+    public function update_order(Request $request)
+    {
+        $profile1 = Order::where('id', $request->id)
+            ->update([
+                'transaction_id' => $request->id,
+                'status_payment' => "WAITING FOR CONFIRMATION",
+                'image_payment' => $request->image_payment,
+                'updated_at' => Carbon::now()->setTimezone('Asia/Jakarta'),
+            ]);
+
+
+
         return redirect('/payment');
     }
 
@@ -66,23 +83,16 @@ class HomeController extends Controller
             ->where('user_id', '=', $request->user()->id)
             ->get();
 
-        // dd($data_orders);
-
         return view('store.payment', ['data_order' => $data_orders]);
     }
 
     public function checkout(Request $request): View
     {
-        // dd(
-        //     $request->id,
-        //     $request->cart,
-        //     $request->total_price,
-        //     $request->discount_id,
-        //     $request->final_price,
-        //     $request->payment_method,
-        // );
+        $json = json_decode($request->cart);
+
         return view('store.checkout', [
             'cart' => $request->cart,
+            'json' => $json,
             'total_price' => $request->total_price,
             'user' => $request->user(),
         ]);
@@ -91,16 +101,14 @@ class HomeController extends Controller
     public function productDetail(Request $request)
     {
         $id_one_product = $request->id_per_product;
+
         $data_products = Product::select('*')
             ->join('product_details', 'products.sku', '=', 'product_details.sku')
             ->where('products.id', '=', $id_one_product)
             ->get();
-        // dd($data_products);
+
         $data_catalogs = Product::inRandomOrder()->limit(5)->get();
-        // dd([
-        //     'data_product' => $data_products,
-        //     'data_catalog' => $data_catalogs
-        // ]);
+
         return view('livewire.product-detail-component', [
             'data_selected_product' => $data_products,
             'data_catalog' => $data_catalogs,

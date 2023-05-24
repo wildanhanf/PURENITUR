@@ -55,15 +55,36 @@ Payment
         <div class="mx-auto max-w-6xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
             <div class="rounded-lg md:w-2/3">
                 @foreach($data_order as $data)
-                <div class="justify-between mb-6 rounded-lg border bg-white p-6 shadow-md sm:flex sm:justify-start">
-                    <div class="mt-5 sm:mt-0">
-                        <h2 class="text-lg font-bold text-gray-900">ORDER ID : PRNTR-ORD-{{ $data->id }}</h2>
-                        <h2 class="text-md font-bold text-gray-900">Status Pembayaran : Belum Upload Bukti Pembayaran</h2>
-                        <p class="mt-4 text-sm text-gray-700 font-medium">Lakukan pembayaran dalam 24 jam dari (tanggal)</p>
-                        <a class="inline-block mt-4 text-sm text-gray-700 font-medium hover:underline" href="https://www.google.com" target="_blank">Upload Bukti Pembayaran</a><br>
-                        <button class="mt-6 w-32 rounded-md bg-primary-1 py-1.5 font-medium text-white hover:bg-primary-2" disabled>Confirm</button>
+                <form method="GET" action="/payments">
+                    @csrf
+
+                    <div class="justify-between mb-6 rounded-lg border bg-white p-6 shadow-md sm:flex sm:justify-start">
+                        <div class="mt-5 sm:mt-0">
+                            <h2 class="text-lg font-bold text-gray-900">ORDER ID : PRNTR-ORD-{{ $data->id }}</h2>
+                            <input id="id" type="hidden" name="id" value="{{ $data->id }}" required readonly>
+
+                            <h2 class="text-md font-bold text-gray-900">Status Pembayaran : {{ $data->status_payment }}</h2>
+
+                            @if($data->transaction_id > 0)
+                            <p>Bukti Pembayaran sudah di upload</p>
+                            <p>Transaction Id : PRNTR-TR-{{ $data->transaction_id }}</p>
+                            <a class="mt-6 w-32 rounded-md bg-primary-1 py-1.5 font-medium text-white hover:bg-primary-2" href="{{ route('shipment') }}">Go to Shipment</a>
+                            @else
+                            <p class="mt-4 text-sm text-gray-700 font-medium">Lakukan pembayaran dalam 24 jam dari {{ $data->created_at }}</p>
+                            <div>
+                                <span class="inline-block mt-4 text-sm text-gray-700 font-medium">Upload Bukti Pembayaran</span><br>
+                                <input type="file" id="image_payment" name="image_payment" required>
+                            </div>
+                            @endif
+
+                            @if($data->transaction_id > 0)
+                            @else
+                            <button class="mt-6 w-32 rounded-md bg-primary-1 py-1.5 font-medium text-white hover:bg-primary-2">Confirm</button>
+                            @endif
+                        </div>
                     </div>
-                </div>
+
+                </form>
                 @endforeach
             </div>
             <!-- Sub total -->

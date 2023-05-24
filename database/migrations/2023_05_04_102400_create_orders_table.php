@@ -20,12 +20,13 @@ return new class extends Migration
             $table->decimal('price_total', 10);
             $table->integer('discount_id')->nullable();
             $table->decimal('final_price', 10);
-            $table->integer('transaction_id')->nullable();
+            $table->integer('transaction_id')->default(null)->unique()->nullable();
             $table->string('payment_type');
             $table->string('status_payment')->default("WAITING FOR PAYMENT");
             $table->string('image_payment')->nullable();
             $table->integer('shipment_id')->nullable();
             $table->string('shipment_status')->nullable();
+            $table->string('shipment_address')->nullable();
             $table->timestamps();
         });
     }

@@ -4,10 +4,17 @@
     <div class="mb-3">
         <h1 class="text-xl font-semibold">Shipment</h1>
     </div>
-    <div class="w-full xl:w-1/2 h-28 border-2 border-slate-800 rounded-md mb-2">
+    @foreach($shipment as $data_shipment)
+    <div class="w-full h-full xl:w-1/2 h-28 border-2 border-slate-800 rounded-md mb-2">
         <div class="m-2 text-sm font-medium lg:text-base">
-            Ship-1234567890 (Pengiriman Selesai)
+            Order ID : {{ $data_shipment->id }}
         </div>
+        <p class="m-2 text-md">
+            Transaction ID : {{ $data_shipment->transaction_id }}
+        </p>
+        <p class="m-2 text-md">
+            Shipment ID : {{ $data_shipment->shipment_id }}
+        </p>
         <p class="m-2 text-xs">
             Barangmu sedang diantarkan oleh kurir PURENITUR
         </p>
@@ -15,17 +22,7 @@
             Detail Barang
         </a>
     </div>
-    <div class="w-full xl:w-1/2 h-28 border-2 border-slate-800 rounded-md mb-2">
-        <div class="m-2 text-sm font-medium lg:text-base">
-            Ship-1234567891
-        </div>
-        <p class="m-2 text-xs">
-            Barangmu sedang diantarkan oleh kurir PURENITUR
-        </p>
-        <a href="" class="m-2 text-xs underline decoration-1 text-blue-500">
-            Detail Barang
-        </a>
-    </div>
+    @endforeach
 </section>
 <section id="catalog" class="">
     <div class="flex justify-center mb-8">
