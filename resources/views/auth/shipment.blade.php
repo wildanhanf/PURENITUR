@@ -4,13 +4,60 @@ Shipment
 
 @extends('landing.base')
 @section('content')
-<section id="shipment" class="lg:mx-64 md:mx-48 sm:mx-24 mx-12 mb-3">
-    <div class="mb-3">
-        <h1 class="text-xl font-semibold">Shipment</h1>
+<section class="xl:mx-64 lg:mx-40 md:mx-48 sm:mx-24 mx-5">
+    <div class="flex mb-5" aria-label="Breadcrumb">
+        <ol class="inline-flex items-center pt-12 space-x-1 md:space-x-3">
+            <li class="inline-flex items-center">
+                <a href="#" class="inline-flex items-center text-sm font-normal text-gray-700">
+                    <svg aria-hidden="true" class="w-4 h-4 mr-2" fill="#7D7D7D" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z">
+                        </path>
+                    </svg>
+                    Home
+                </a>
+            </li>
+            <li>
+                <div class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="24" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="m7 21l7.9-18H17L9.1 21H7Z" />
+                    </svg>
+                    <a href="#" class="ml-1 text-sm font-normal text-gray-700 md:ml-2">Store</a>
+                </div>
+            </li>
+            <li>
+                <div class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="24" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="m7 21l7.9-18H17L9.1 21H7Z" />
+                    </svg>
+                    <a href="#" class="ml-1 text-sm font-normal text-gray-700 md:ml-2">Cart</a>
+                </div>
+            </li>
+            <li>
+                <div class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="24" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="m7 21l7.9-18H17L9.1 21H7Z" />
+                    </svg>
+                    <span class="ml-1 text-sm font-medium text-gray-500 md:ml-2">Checkout</span>
+                </div>
+            </li>
+            <li aria-current="page">
+                <div class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="24" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="m7 21l7.9-18H17L9.1 21H7Z" />
+                    </svg>
+                    <span class="ml-1 text-sm font-medium text-gray-500 md:ml-2">Shipment</span>
+                </div>
+            </li>
+        </ol>
     </div>
+</section>
+<section id="shipment" class="lg:mx-64 md:mx-48 sm:mx-24 mx-5 mb-3">
+    <h1 class="mb-3 text-2xl font-bold">Payment</h1>
     @if ($shipment->count() > 0)
     @foreach($shipment as $data_shipment)
-    <div class="w-full h-full xl:w-1/2 h-28 border-2 border-slate-800 rounded-md mb-2">
+    <div class="w-full h-full xl:w-1/2 border-2 border-slate-800 rounded-md mb-3 p-5">
         <div class="m-2 text-sm font-medium lg:text-base">
             Order ID : {{ $data_shipment->id }}
         </div>
@@ -34,7 +81,7 @@ Shipment
             @csrf
             <input type="hidden" name="id" id="id" value="{{ $data_shipment->id }}">
             <input type="hidden" name="user_id" id="user_id" value="{{ $data_shipment->user_id }}">
-            <button type="submit" class="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-primary-1 hover:text-blue-50">Detail Order</button>
+            <button type="submit" class="cursor-pointer bg-gray-100 py-1 px-3.5 duration-100 hover:bg-primary-1 hover:text-blue-50 rounded-md">Detail Order</button>
         </form>
     </div>
     @endforeach
@@ -49,7 +96,7 @@ Shipment
     </div>
     @endif
 </section>
-<section id="catalog" class="">
+<section id="catalog" class="mt-5">
     <div class="flex justify-center mb-8">
         <h1 class="font-semibold text-slate-900 text-md lg:text-xl md:text-lg">Rekomendasi Untukmu</h1>
     </div>

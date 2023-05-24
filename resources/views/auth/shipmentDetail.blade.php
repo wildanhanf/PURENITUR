@@ -10,7 +10,7 @@ Shipment
     </div>
     @if ($shipment->count() > 0)
     @foreach($shipment as $data_shipment)
-    <div class="w-full h-full xl:w-1/2 h-28 border-2 border-slate-800 rounded-md mb-2">
+    <div class="w-full h-full xl:w-1/2 border-2 border-slate-800 rounded-md mb-2">
         <div class="m-2 text-sm font-medium lg:text-base">
             @if(empty($data_shipment->shipment_id))
             Shipment : PENDING

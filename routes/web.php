@@ -29,6 +29,7 @@ Route::get('/shipment', [HomeController::class, 'shipment'])->name('shipment');
 Route::get('/order-detail', [HomeController::class, 'order_detail'])->name('order-detail');
 Route::get('/checkout', [HomeController::class, 'checkout'])->name('checkout');
 Route::get('/checkouts', [HomeController::class, 'create_order'])->name('checkouts');
+Route::get('/customization', [HomeController::class, 'customization'])->name('customization');
 
 Route::get('/cart', CartComponent::class)->name('cart');
 Route::get('/dec-qty', [CartComponent::class, 'decreaseQuantity'])->name('dec-qty');

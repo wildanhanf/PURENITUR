@@ -141,4 +141,9 @@ class HomeController extends Controller
         session()->flash('success_message', 'Item added in Cart');
         return redirect()->route('livewire.cart-component');
     }
+
+    public function customization()
+    {
+        return view('livewire.customization-product');
+    }
 }
