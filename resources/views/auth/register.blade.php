@@ -1,4 +1,9 @@
+@section('title')
+Register
+@endsection
+
 @extends('layouts.auth-master')
+
 <head>
     @include('landing.head')
 </head>
@@ -8,7 +13,7 @@
     <div class="container">
         <img src="/img/logo.png" class="mx-auto mb-3 w-[108px]" alt="PURENITUR Logo">
         <h1 class="text-lg font-semibold mb-3 text-center">Welcome to PURENITUR</h1>
-        <form method="post" action="{{ route('register.perform') }}"  class="px-7 py-7 shadow-lg rounded-md max-w-lg items-center mx-auto">
+        <form method="post" action="{{ route('register.perform') }}" class="px-7 py-7 shadow-lg rounded-md max-w-lg items-center mx-auto">
 
             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
 
@@ -93,7 +98,7 @@
             <div class="mb-3 text-xs">
                 <input type="number" class="border-solid border-2 rounded border-slate-300 w-full" name="telephone" value="{{ old('telephone') }}" placeholder="" required="required" autofocus>
             </div>
-                
+
             <button class="w-[270px] h-[35px] bg-[#079992] rounded-full mx-auto text-white" type="submit">Sign Up</button>
 
             <!-- @include('auth.partials.copy') -->

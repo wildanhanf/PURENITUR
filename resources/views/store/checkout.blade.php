@@ -1,5 +1,5 @@
 @section('title')
-Payment
+Checkout
 @endsection
 
 @section('js_script')
@@ -124,7 +124,7 @@ Payment
 
                         <div class="border-left pl-2"><span class="head">Alamat Pengiriman</span>
                             <div class="d-flex">
-                                <input type="text" value="{{ old('address', $user->address) }}" style="border:1px solid black"></input>
+                                <input type="text" id="shipping_address" name="shipping_address" value="{{ old('address', $user->address) }}" style="border:1px solid black"></input>
                             </div>
                         </div>
                     </div>

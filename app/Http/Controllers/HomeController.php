@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\User;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -25,11 +26,29 @@ class HomeController extends Controller
             ->where('user_id', '=', auth()->user()->id)
             ->get();
 
-        // dd($data_shipment);
-
         return view('auth.shipment', [
             'data' => $data_catalog,
             'shipment' => $data_shipment,
+        ]);
+    }
+
+    public function order_detail(Request $request)
+    {
+        $data_catalog = Product::inRandomOrder()->limit(5)->get();
+        $data_shipment = Order::select('*')
+            ->where('id', '=', $request->id)
+            ->get();
+
+        // $data_user = User::select('*')
+        //     ->where('id', '=', $request->user_id)
+        //     ->get();
+
+        // dd($data_user);
+
+        return view('auth.shipmentDetail', [
+            'data' => $data_catalog,
+            'shipment' => $data_shipment,
+            // 'user' => $data_user,
         ]);
     }
 
@@ -54,6 +73,7 @@ class HomeController extends Controller
             "discount_id" => $request->discount_id,
             "final_price" => $val2,
             "payment_type" => $request->payment_method,
+            "shipping_address" => $request->shipping_address,
         );
         Order::create($createOrder);
 

@@ -52,6 +52,7 @@ Payment
     </div>
     <div class="h-screen pt-20">
         <h1 class="mb-10 pl-20 text-2xl font-bold">Payment</h1>
+        @if ($data_order->count() > 0)
         <div class="mx-auto max-w-6xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
             <div class="rounded-lg md:w-2/3">
                 @foreach($data_order as $data)
@@ -111,6 +112,16 @@ Payment
                 </div>
             </div>
         </div>
+        @else
+        <div class="mt-10 mb-10 rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
+            <div class="mb-2 text-center">
+                <p class="text-gray-700">Kamu belom belanja. <br>Yuk Belanja Dulu!</p>
+            </div>
+            <a href="{{ 'catalog' }}">
+                <button class="w-full rounded-md bg-primary-1 py-1.5 font-medium text-white hover:bg-primary-2">Go to Catalog</button>
+            </a>
+        </div>
+        @endif
     </div>
 </section>
 @endsection

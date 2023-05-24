@@ -12,30 +12,39 @@ Shipment
     @foreach($shipment as $data_shipment)
     <div class="w-full h-full xl:w-1/2 h-28 border-2 border-slate-800 rounded-md mb-2">
         <div class="m-2 text-sm font-medium lg:text-base">
-            Order ID : {{ $data_shipment->id }}
-        </div>
-        <p class="m-2 text-md">
-            Transaction ID : {{ $data_shipment->transaction_id }}<br>
-            Status Payment : {{ $data_shipment->status_payment }}
-        </p>
-        @if(empty($data_shipment->shipment_id))
-        <p class="m-2 text-xs">
-            Barangmu sedang dikemas
-        </p>
-        @else
-        <p class="m-2 text-md">
+            @if(empty($data_shipment->shipment_id))
+            Shipment : PENDING
+            @else
             Shipment ID : {{ $data_shipment->shipment_id }}
-        </p>
-        <p class="m-2 text-xs">
-            Barangmu sedang diantarkan oleh kurir PURENITUR
-        </p>
-        @endif
-        <form id="submits1" action="/order-detail" method="GET" class="">
-            @csrf
-            <input type="hidden" name="id" id="id" value="{{ $data_shipment->id }}">
-            <input type="hidden" name="user_id" id="user_id" value="{{ $data_shipment->user_id }}">
-            <button type="submit" class="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-primary-1 hover:text-blue-50">Detail Order</button>
-        </form>
+            @endif
+        </div>
+        <div class="m-2 text-sm font-medium lg:text-base">
+            Order ID : {{ $data_shipment->id }}<br>
+            Transaction ID : {{ $data_shipment->transaction_id }}<br>
+        </div>
+        <div>
+            <p class="m-2 text-md">
+                <li>
+                    <span>Barangmu sedang dikemas</span>
+                </li>
+                @if($data_shipment->shipment_status == 'SHIPPING')
+                <li>
+                    <span>Pesananmu sedang diantar dari Toko</span>
+                </li>
+                @else
+                @endif
+
+                @if($data_shipment->shipment_status == 'ARRIVED')
+                <li>
+                    <span>Pesananmu sedang diantar dari Toko</span>
+                </li>
+                <li>
+                    <span>Pesananmu sudah sampai di tujuan</span>
+                </li>
+                @else
+                @endif
+            </p>
+        </div>
     </div>
     @endforeach
     @else
@@ -94,19 +103,4 @@ Shipment
         </div>
     </div>
 </section>
-<script>
-    function submitFunction1() {
-        var form = document.getElementById("submits1");
-        console.log(document.getElementsByName('id_per_product').value);
-
-        var input = document.createElement("input");
-        input.type = "hidden";
-        input.name = "parameter";
-        input.value = document.getElementsByName('id_per_product').value;
-
-        form.appendChild(input);
-
-        form.submit();
-    }
-</script>
 @endsection

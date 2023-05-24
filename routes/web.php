@@ -26,6 +26,7 @@ Route::get('/catalog', CatalogComponent::class)->name('catalog');
 Route::get('/product-detail', [ProductDetailComponent::class, 'callPage'])->name('product-detail');
 Route::get('/productDetails', [HomeController::class, 'productDetail'])->name('productDetails');
 Route::get('/shipment', [HomeController::class, 'shipment'])->name('shipment');
+Route::get('/order-detail', [HomeController::class, 'order_detail'])->name('order-detail');
 Route::get('/checkout', [HomeController::class, 'checkout'])->name('checkout');
 Route::get('/checkouts', [HomeController::class, 'create_order'])->name('checkouts');
 
