@@ -14,7 +14,7 @@
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">User_ID</th>
-                    <th scope="col">Full Name</th>
+                    <!-- <th scope="col">Full Name</th> -->
                     <th scope="col">Cart</th>
                     <th scope="col">Total Price</th>
                     <th scope="col">Discount ID</th>
@@ -28,27 +28,44 @@
                     <th scope="col">Shipment Address</th>
                     <th scope="col">Timestamp Order</th>
                     <th scope="col">Timestamp Update</th>
+                    <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($data_order as $data)
                 <tr>
                     <th scope="row">{{ $data->id }}</th>
-                    <td>{{ $data->user_id }}</td>
-                    <td>{{ $data->first_name }} {{ $data->last_name }}</td>
-                    <td>JSON NYA NANTI YAK</td>
+                    <td>{{ $data->user_id }}<br><a href="">View User</a></td>
+                    <!-- <td>{{ $data->first_name }} {{ $data->last_name }}</td> -->
+                    <td><a href="">View Cart</a></td>
                     <td>{{ $data->price_total }}</td>
                     <td>{{ $data->discount_id }}</td>
                     <td>{{ $data->final_price }}</td>
                     <td>{{ $data->transaction_id }}</td>
                     <td>{{ $data->payment_type }}</td>
                     <td>{{ $data->status_payment }}</td>
-                    <td>{{ $data->image_payment }}</td>
+                    <td><a href="">View Image</a></td>
+                    @if(empty($data->shipment_id))
+                    <td colspan="2">Belum Dikirim</td>
+                    @else
                     <td>{{ $data->shipment_id }}</td>
                     <td>{{ $data->shipment_status }}</td>
+                    @endif
                     <td>{{ $data->shipment_address }}</td>
                     <td>{{ $data->created_at }}</td>
                     <td>{{ $data->updated_at }}</td>
+                    <td>
+                        <form action="/admin/orders/edit" method="GET" class="mb-2">
+                            @csrf
+                            <input id="id" name="id" type="hidden" value="{{ $data->id }}">
+                            <button type="submit" style="background-color:orange">Edit</button>
+                        </form>
+                        <form action="/admin/orders/edit/delete" method="GET">
+                            @csrf
+                            <input id="id" name="id" type="hidden" value="{{ $data->id }}">
+                            <button type="submit" style="background-color:red">Delete</button>
+                        </form>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

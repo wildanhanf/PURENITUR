@@ -24,6 +24,7 @@
                     <th scope="col">Fitur 2</th>
                     <th scope="col">Fitur 3</th>
                     <th scope="col">Fitur 4</th>
+                    <th scope="col" colspan="2">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -34,13 +35,27 @@
                     <td>{{ $data->category }}</td>
                     <td>{{ $data->sku }}</td>
                     <td>{{ $data->price }}</td>
-                    <td><img src="{{ $data->image }}" style="width:50px; height:50px"></td>
+                    <td><img src="{{ $data->image }}" style="width:80px; height:80px"></td>
                     <td>{{ $data->rating }}</td>
                     <td>{{ $data->sold }}</td>
                     <td>{{ $data->feature_1 }}</td>
                     <td>{{ $data->feature_2 }}</td>
                     <td>{{ $data->feature_3 }}</td>
                     <td>{{ $data->feature_4 }}</td>
+                    <td>
+                        <form action="/admin/products/edit" method="GET">
+                            @csrf
+                            <input id="id" name="id" type="hidden" value="{{ $data->id }}">
+                            <button type="submit" style="background-color:orange">Edit</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/admin/products/edit/delete" method="GET">
+                            @csrf
+                            <input id="id" name="id" type="hidden" value="{{ $data->id }}">
+                            <button type="submit" style="background-color:red">Delete</button>
+                        </form>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

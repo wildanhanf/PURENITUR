@@ -73,7 +73,7 @@ class HomeController extends Controller
             "discount_id" => $request->discount_id,
             "final_price" => $val2,
             "payment_type" => $request->payment_method,
-            "shipping_address" => $request->shipping_address,
+            "shipment_address" => $request->shipment_address,
         );
         Order::create($createOrder);
 
@@ -91,8 +91,6 @@ class HomeController extends Controller
                 'image_payment' => $request->image_payment,
                 'updated_at' => Carbon::now()->setTimezone('Asia/Jakarta'),
             ]);
-
-
 
         return redirect('/payment');
     }
@@ -135,11 +133,6 @@ class HomeController extends Controller
         ]);
     }
 
-    public function AdminUsers()
-    {
-        return view('admin.users');
-    }
-
     public function store($product_id, $product_name, $product_price)
     {
         Cart::add($product_id, $product_name, 1, $product_price)->associate('\App\Models\Product');
@@ -150,5 +143,10 @@ class HomeController extends Controller
     public function customization()
     {
         return view('livewire.customization-product');
+    }
+
+    public function AdminUsers()
+    {
+        return view('admin.users');
     }
 }
