@@ -43,4 +43,9 @@ class HomeController extends Controller
             'data' => $data_catalog,
         ]);
     }
+
+    public function AdminUsers()
+    {
+        return view('admin.users');
+    }
 }

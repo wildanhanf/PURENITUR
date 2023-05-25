@@ -27,6 +27,8 @@ Route::get('/shipment', [HomeController::class, 'shipment'])->name('shipment');
 Route::get('/cart', [HomeController::class, 'shoppingCart'])->name('cart');
 Route::get('/payment', [HomeController::class, 'payment'])->name('payment');
 
+Route::get('/admin-users', [HomeController::class, 'AdminUsers'])->name('admin-users');
+
 Route::group(['namespace' => 'App\Http\Controllers'], function () {
     /**
      * Home Routes

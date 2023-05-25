@@ -47,22 +47,22 @@ Payment
                     <h2 class="text-lg font-bold text-gray-900">Payment Method</h2>
                     <ol class="pl-4 max-w-md space-y-1 text-gray-900 list-decimal list-outside">
                         <li>
-                            <span class="font-semibold text-gray-900">Checkout barang pada halaman ini untuk menerima kode pembayaran.</span>
+                            <span class="font-normal text-gray-900">Checkout barang pada halaman ini untuk menerima kode pembayaran.</span>
                         </li>
                         <li>
-                            <span class="font-semibold text-gray-900">Setelah menerima kode pembayaran, lakukan transfer pada nomor rekening yang tersedia.</span> 
+                            <span class="font-normal text-gray-900">Setelah menerima kode pembayaran, lakukan transfer pada nomor rekening yang tersedia.</span> 
                         </li>
                         <li>
-                            <span class="font-semibold text-gray-900">Simpan tanda bukti pembayaran.</span>
+                            <span class="font-normal text-gray-900">Simpan tanda bukti pembayaran.</span>
                         </li>
                         <li>
-                            <span class="font-semibold text-gray-900">Isi formulir untuk memberikan bukti pembayaran kepada</span> <span class="font-bold text-gray-900"> Admin</span>
+                            <span class="font-normal text-gray-900">Isi formulir untuk memberikan bukti pembayaran kepada</span> <span class="font-bold text-gray-900"> Admin</span>
                         </li>
                         <li>
-                            <span class="font-semibold text-gray-900">Pembayaran akan dikonfirmasi paling lambat 1 x 24 jam, pembayaran akan otomatis batal jika melebihi waktu yang ditentukan.</span>
+                            <span class="font-normal text-gray-900">Pembayaran akan dikonfirmasi paling lambat 1 x 24 jam, pembayaran akan otomatis batal jika melebihi waktu yang ditentukan.</span>
                         </li>
                         <li>
-                            <span class="font-semibold text-gray-900">Anda akan menerima email apabila pembayaran terkonfirmasi, kemudian anda bisa melihat menu pengiriman pada menu</span> <span class="font-bold text-gray-900">Notifikasi</span>
+                            <span class="font-normal text-gray-900">Anda akan menerima email apabila pembayaran terkonfirmasi, kemudian anda bisa melihat menu pengiriman pada menu</span> <span class="font-bold text-gray-900">Notifikasi</span>
                         </li>
                     </ol>
                 </div>

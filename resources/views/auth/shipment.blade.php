@@ -1,5 +1,5 @@
 @extends('landing.base')
-@section('landing.content')
+@section('content')
     <section id="shipment" class="lg:mx-64 md:mx-48 sm:mx-24 mx-12 mb-3">
         <div class="mb-3">
             <h1 class="text-xl font-semibold">Shipment</h1>
@@ -28,7 +28,7 @@
         </div>
     </section>
     <section id="catalog" class="">
-        <div class="flex justify-center mb-8">
+        <div class="flex justify-center mb-8 mt-24">
             <h1 class="font-semibold text-slate-900 text-md lg:text-xl md:text-lg">Rekomendasi Untukmu</h1>
         </div>
         <div class="bg-primary-one">
