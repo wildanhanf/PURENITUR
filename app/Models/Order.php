@@ -20,5 +20,6 @@ class Order extends Model
         'image_payment',
         'shipment_id',
         'shipment_status',
+        'shipment_address',
     ];
 }

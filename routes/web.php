@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\CatalogComponent;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AdminController;
+use App\Http\Livewire\CartComponent;
+use App\Http\Livewire\ProductDetailComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,11 +24,28 @@ use App\Http\Controllers\ProfileController;
 // });
 
 Route::get('/catalog', CatalogComponent::class)->name('catalog');
-Route::get('/productDetail', [HomeController::class, 'productDetail'])->name('productDetail');
+Route::get('/product-detail', [ProductDetailComponent::class, 'callPage'])->name('product-detail');
+Route::get('/productDetails', [HomeController::class, 'productDetail'])->name('productDetails');
 Route::get('/shipment', [HomeController::class, 'shipment'])->name('shipment');
+Route::get('/order-detail', [HomeController::class, 'order_detail'])->name('order-detail');
+Route::get('/checkout', [HomeController::class, 'checkout'])->name('checkout');
+Route::get('/checkouts', [HomeController::class, 'create_order'])->name('checkouts');
+Route::get('/customization', [HomeController::class, 'customization'])->name('customization');
 
-Route::get('/cart', [HomeController::class, 'shoppingCart'])->name('cart');
+Route::get('/cart', CartComponent::class)->name('cart');
+Route::get('/dec-qty', [CartComponent::class, 'decreaseQuantity'])->name('dec-qty');
+Route::get('/add-qty', [CartComponent::class, 'increaseQuantity'])->name('add-qty');
+Route::get('/carts', [ProductDetailComponent::class, 'store'])->name('carts');
 Route::get('/payment', [HomeController::class, 'payment'])->name('payment');
+Route::get('/payments', [HomeController::class, 'update_order'])->name('payments');
+
+Route::get('/admin', [AdminController::class, 'visit_dashboard'])->name('admin-dashboard');
+Route::get('/admin/users', [AdminController::class, 'visit_user'])->name('admin-user');
+Route::get('/admin/products', [AdminController::class, 'visit_product'])->name('admin-product');
+Route::get('/admin/orders', [AdminController::class, 'visit_order'])->name('admin-order');
+Route::get('/admin/customize-products', [AdminController::class, 'visit_customize_product'])->name('admin-customize-product');
+Route::get('/admin/shipments', [AdminController::class, 'visit_shipment'])->name('admin-shipment');
+Route::get('/admin/discounts', [AdminController::class, 'visit_discount'])->name('admin-discount');
 
 Route::get('/admin-users', [HomeController::class, 'AdminUsers'])->name('admin-users');
 

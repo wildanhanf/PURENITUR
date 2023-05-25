@@ -1,3 +1,6 @@
+@section('title')
+Edit Profile
+@endsection
 @extends('landing.base')
 @section('content')
 <div class="mt-8">
@@ -83,8 +86,12 @@
                     </form>
                 </section>
                 <div class="w-full lg:w-1/3 items-center justify-center ">
-                    <div class="w-72 h-14 bg-primary-1 rounded-lg text-center text-white text-md p-3 font-base mb-6 shadow-lg mx-auto">Your Shipment</div>
-                    <div class="w-72 h-14 bg-primary-1 rounded-lg text-center text-white text-md p-3 font-base shadow-lg mx-auto">Your Payment</div>
+                    <a href="{{ route('shipment') }}">
+                        <div class="w-72 h-14 bg-primary-1 rounded-lg text-center text-white text-md p-3 font-base mb-6 shadow-lg mx-auto">Your Shipment</div>
+                    </a>
+                    <a href="{{ route('payment') }}">
+                        <div class="w-72 h-14 bg-primary-1 rounded-lg text-center text-white text-md p-3 font-base shadow-lg mx-auto">Your Payment</div>
+                    </a>
                 </div>
             </div>
         </div>

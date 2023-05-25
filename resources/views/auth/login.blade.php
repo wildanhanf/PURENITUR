@@ -1,3 +1,7 @@
+@section('title')
+Login
+@endsection
+
 @extends('layouts.auth-master')
 
 @section('content')
