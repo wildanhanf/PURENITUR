@@ -9,10 +9,8 @@ Shipment
         <ol class="inline-flex items-center pt-12 space-x-1 md:space-x-3">
             <li class="inline-flex items-center">
                 <a href="#" class="inline-flex items-center text-sm font-normal text-gray-700">
-                    <svg aria-hidden="true" class="w-4 h-4 mr-2" fill="#7D7D7D" viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z">
+                    <svg aria-hidden="true" class="w-4 h-4 mr-2" fill="#7D7D7D" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z">
                         </path>
                     </svg>
                     Home
@@ -65,18 +63,6 @@ Shipment
             Transaction ID : {{ $data_shipment->transaction_id }}<br>
             Status Payment : {{ $data_shipment->status_payment }}
         </p>
-        @if(empty($data_shipment->shipment_id))
-        <p class="m-2 text-xs">
-            Barangmu sedang dikemas
-        </p>
-        @else
-        <p class="m-2 text-md">
-            Shipment ID : {{ $data_shipment->shipment_id }}
-        </p>
-        <p class="m-2 text-xs">
-            Barangmu sedang diantarkan oleh kurir PURENITUR
-        </p>
-        @endif
         <form id="submits1" action="/order-detail" method="GET" class="">
             @csrf
             <input type="hidden" name="id" id="id" value="{{ $data_shipment->id }}">

@@ -21,6 +21,7 @@
                     <th scope="col">Address</th>
                     <th scope="col">No HP</th>
                     <th scope="col">Is-Admin</th>
+                    <th scope="col" colspan="2">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -35,6 +36,20 @@
                     <td>{{ $data->address }}</td>
                     <td>{{ $data->telephone }}</td>
                     <td>{{ $data->is_admin }}</td>
+                    <td>
+                        <form action="/admin/users/edit" method="GET">
+                            @csrf
+                            <input id="id" name="id" type="hidden" value="{{ $data->id }}">
+                            <button type="submit" style="background-color:orange">Edit</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/admin/users/edit/delete" method="GET">
+                            @csrf
+                            <input id="id" name="id" type="hidden" value="{{ $data->id }}">
+                            <button type="submit" style="background-color:red">Delete</button>
+                        </form>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

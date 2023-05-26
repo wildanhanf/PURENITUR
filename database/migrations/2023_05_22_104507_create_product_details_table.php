@@ -17,10 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('name_product');
             $table->string('sku', 12);
-            $table->string('feature_1');
-            $table->string('feature_2');
-            $table->string('feature_3');
-            $table->string('feature_4');
+            $table->string('feature_1')->nullable();
+            $table->string('feature_2')->nullable();
+            $table->string('feature_3')->nullable();
+            $table->string('feature_4')->nullable();
             $table->timestamps();
         });
     }

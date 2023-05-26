@@ -13,7 +13,7 @@
 
 <body>
     <div class="container-fluid mt-5 mb-5">
-        <h1 class="text-center">Admin Dashboard</h1>
+        <h1 class="text-center"><a href="{{ route('admin-dashboard') }}">Admin Dashboard</a></h1>
         <h2 class="text-center">Hello, Cek Admin</h2>
         <h4 class="text-center mt-5">@yield('title')</h4>
         @yield('content')

@@ -140,7 +140,20 @@
                                     to Catalog</button>
                             </a>
                         </div>
+<<<<<<< HEAD
                     @endif
+=======
+                    </div>
+
+                    <form action="/checkout" method="POST">
+                        @csrf
+
+                        <input type="hidden" name="cart" value="{{ Cart::content() }}">
+                        <input type="hidden" name="total_price" value="{{ Cart::total() }}">
+
+                        <button type="submit" class="mt-6 w-full rounded-md bg-primary-1 py-1.5 font-medium text-white hover:bg-primary-2">Order</button>
+                    </form>
+>>>>>>> bca3b66314e9ab366c1f64a2e5c6855b26b3ab19
                 </div>
             </div>
         </section>
