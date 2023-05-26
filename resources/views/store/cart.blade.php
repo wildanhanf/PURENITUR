@@ -5,7 +5,7 @@ Cart
 @extends('layouts.app')
 
 @section('content')
-<section>
+<section class="">
     <div class="flex" aria-label="Breadcrumb">
         <ol class="inline-flex items-center pt-12 pl-20 space-x-1 md:space-x-3">
             <li class="inline-flex items-center">

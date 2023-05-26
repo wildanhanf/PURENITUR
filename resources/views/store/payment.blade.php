@@ -74,9 +74,9 @@
                                         {{ $data->status_payment }}</h2>
 
                                     @if ($data->transaction_id > 0)
-                                        <p>Bukti Pembayaran sudah di upload</p>
-                                        <p>Transaction Id : PRNTR-TR-{{ $data->transaction_id }}</p>
-                                        <a class="mt-6 w-32 rounded-md bg-primary-1 py-1.5 font-medium text-white hover:bg-primary-2"
+                                        <p class="mt-4 text-sm text-gray-700 font-medium">Bukti Pembayaran sudah di upload</p>
+                                        <p class="mt-4 text-sm text-gray-700 font-medium mb-4">Transaction Id : PRNTR-TR-{{ $data->transaction_id }}</p>
+                                        <a class="mt-4 w-32 rounded-md bg-primary-1 py-1.5 font-medium text-white hover:bg-primary-2 p-2"
                                             href="{{ route('shipment') }}">Go to Shipment</a>
                                     @else
                                         <p class="mt-4 text-sm text-gray-700 font-medium">Lakukan pembayaran dalam 24 jam
