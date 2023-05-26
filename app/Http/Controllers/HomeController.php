@@ -39,16 +39,9 @@ class HomeController extends Controller
             ->where('id', '=', $request->id)
             ->get();
 
-        // $data_user = User::select('*')
-        //     ->where('id', '=', $request->user_id)
-        //     ->get();
-
-        // dd($data_user);
-
         return view('auth.shipmentDetail', [
             'data' => $data_catalog,
             'shipment' => $data_shipment,
-            // 'user' => $data_user,
         ]);
     }
 
@@ -84,13 +77,29 @@ class HomeController extends Controller
 
     public function update_order(Request $request)
     {
+        $validatedData  = $request->validate([
+            'image_payment' => 'required'
+        ]);
+        $validatedData['transaction_id'] = $request->id;
+        $validatedData['status_payment'] = "WAITING FOR CONFIRMATION";
+        $validatedData['image_payment'] = $request->image_payment;
+        $validatedData['updated_at'] = Carbon::now()->setTimezone('Asia/Jakarta');
+
+        if ($request->file('image_payment')) {
+            $validatedData['image_payment'] = $request->file('image_payment')->store('img_payment');
+        }
+
         $profile1 = Order::where('id', $request->id)
-            ->update([
-                'transaction_id' => $request->id,
-                'status_payment' => "WAITING FOR CONFIRMATION",
-                'image_payment' => $request->image_payment,
-                'updated_at' => Carbon::now()->setTimezone('Asia/Jakarta'),
-            ]);
+            ->update($validatedData);
+
+
+        // $profile1 = Order::where('id', $request->id)
+        //     ->update([
+        //         'transaction_id' => $request->id,
+        //         'status_payment' => "WAITING FOR CONFIRMATION",
+        //         'image_payment' => $request->image_payment,
+        //         'updated_at' => Carbon::now()->setTimezone('Asia/Jakarta'),
+        //     ]);
 
         return redirect('/payment');
     }

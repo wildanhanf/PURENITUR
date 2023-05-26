@@ -148,10 +148,8 @@ class AdminController extends Controller
     {
         if (auth()->user()->is_admin == 1) {
             $data_order = Order::select('*')
-                // ->join('users', 'users.id', '=', 'orders.user_id')
                 ->get();
 
-            // dd($data_order);
             return view('admin.adminOrder', ['data_order' => $data_order]);
         } else {
             return redirect('/');

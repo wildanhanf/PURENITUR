@@ -108,7 +108,7 @@ Cart
                         </div>
                     </div>
 
-                    <form action="/checkout" method="GET">
+                    <form action="/checkout" method="POST">
                         @csrf
 
                         <input type="hidden" name="cart" value="{{ Cart::content() }}">

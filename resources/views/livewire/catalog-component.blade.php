@@ -33,7 +33,7 @@ Catalog
                 <div class="grid grid-cols-2 xl:grid-cols-6 auto-cols-auto p-5 gap-4">
                     <!-- Product -->
                     @foreach ($data as $catalog)
-                    <form id="submits" action="/product-detail" method="GET" class="">
+                    <form id="submits" action="/product-detail/{{$catalog->name_product}}" method="POST" class="">
                         @csrf
                         <div class="bg-white shadow-lg rounded-lg w-44 h-50 lg:w-56 lg:h-100">
                             <!-- kalo bisa pake anchor lebih bagus -->

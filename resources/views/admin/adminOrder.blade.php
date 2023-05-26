@@ -39,12 +39,18 @@
                     <!-- <td>{{ $data->first_name }} {{ $data->last_name }}</td> -->
                     <td><a href="">View Cart</a></td>
                     <td>{{ $data->price_total }}</td>
+                    @if(empty($data->discount->id))
+                    <td>EMPTY</td>
+                    @else
                     <td>{{ $data->discount_id }}</td>
+                    @endif
                     <td>{{ $data->final_price }}</td>
                     <td>{{ $data->transaction_id }}</td>
                     <td>{{ $data->payment_type }}</td>
                     <td>{{ $data->status_payment }}</td>
-                    <td><a href="">View Image</a></td>
+                    <td><a href="{{ asset('') }}{{ $data->image_payment }}">View Image</a>
+                        <img src="" />
+                    </td>
                     @if(empty($data->shipment_id))
                     <td colspan="2">Belum Dikirim</td>
                     @else
