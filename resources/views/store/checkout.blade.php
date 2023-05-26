@@ -9,50 +9,6 @@ Checkout
 @extends('layouts.app')
 
 @section('content')
-<<<<<<< HEAD
-    @if (Auth::user())
-        <section class="">
-            <div class="flex" aria-label="Breadcrumb">
-                <ol class="inline-flex items-center pt-12 pl-5 space-x-1 md:space-x-3">
-                    <li class="inline-flex items-center">
-                        <a href="#" class="inline-flex items-center text-sm font-normal text-gray-700">
-                            <svg aria-hidden="true" class="w-4 h-4 mr-2" fill="#7D7D7D" viewBox="0 0 20 20"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z">
-                                </path>
-                            </svg>
-                            Home
-                        </a>
-                    </li>
-                    <li>
-                        <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="24" viewBox="0 0 24 24">
-                                <path fill="currentColor" d="m7 21l7.9-18H17L9.1 21H7Z" />
-                            </svg>
-                            <a href="#" class="ml-1 text-sm font-normal text-gray-700 md:ml-2">Store</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="24" viewBox="0 0 24 24">
-                                <path fill="currentColor" d="m7 21l7.9-18H17L9.1 21H7Z" />
-                            </svg>
-                            <a href="#" class="ml-1 text-sm font-normal text-gray-700 md:ml-2">Cart</a>
-                        </div>
-                    </li>
-                    <li aria-current="page">
-                        <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="24" viewBox="0 0 24 24">
-                                <path fill="currentColor" d="m7 21l7.9-18H17L9.1 21H7Z" />
-                            </svg>
-                            <span class="ml-1 text-sm font-medium text-gray-500 md:ml-2">Checkout</span>
-                        </div>
-                    </li>
-                </ol>
-            </div>
-        </section>
-=======
 @if (Auth::user())
 <section>
     <div class="flex" aria-label="Breadcrumb">
@@ -93,7 +49,6 @@ Checkout
         </ol>
     </div>
 </section>
->>>>>>> bca3b66314e9ab366c1f64a2e5c6855b26b3ab19
 
 <section class="flex flex-wrap xl:mx-64 lg:mx-40 md:mx-48 sm:mx-24">
     <div class="container mt-5 mx-5">
