@@ -43,6 +43,8 @@ Route::get('/admin', [AdminController::class, 'visit_dashboard'])->name('admin-d
 Route::get('/admin/users', [AdminController::class, 'visit_user'])->name('admin-user');
 Route::get('/admin/products', [AdminController::class, 'visit_product'])->name('admin-product');
 Route::get('/admin/orders', [AdminController::class, 'visit_order'])->name('admin-order');
+Route::post('/admin/orders/view-cart', [AdminController::class, 'view_cart'])->name('admin-order-view-cart');
+Route::post('/admin/orders/view-user', [AdminController::class, 'view_user'])->name('admin-order-view-user');
 Route::get('/admin/customize-products', [AdminController::class, 'visit_customize_product'])->name('admin-customize-product');
 Route::get('/admin/shipments', [AdminController::class, 'visit_shipment'])->name('admin-shipment');
 Route::get('/admin/discounts', [AdminController::class, 'visit_discount'])->name('admin-discount');

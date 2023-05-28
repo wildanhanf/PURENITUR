@@ -203,6 +203,31 @@ class AdminController extends Controller
         }
     }
 
+    public function view_cart(Request $request)
+    {
+        if (auth()->user()->is_admin == 1) {
+            $json = json_decode($request->cart);
+            // dd($json);
+            return view('admin.view.viewCart', [
+                'json' => $json,
+            ]);
+        } else {
+            return redirect('/');
+        }
+    }
+
+    public function view_user(Request $request)
+    {
+        if (auth()->user()->is_admin == 1) {
+            $param = User::where('id', '=', $request->user_id)->get();
+            return view('admin.view.viewUser', [
+                'data_user' => $param,
+            ]);
+        } else {
+            return redirect('/');
+        }
+    }
+
     public function visit_shipment()
     {
         if (auth()->user()->is_admin == 1) {

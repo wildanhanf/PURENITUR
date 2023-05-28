@@ -35,7 +35,15 @@
                     <td>{{ $data->gender }}</td>
                     <td>{{ $data->address }}</td>
                     <td>{{ $data->telephone }}</td>
-                    <td>{{ $data->is_admin }}</td>
+                    @if($data->is_admin == 1)
+                    <td style="background-color:green; color:white">
+                        Admin
+                    </td>
+                    @else
+                    <td>
+                        User
+                    </td>
+                    @endif
                     <td>
                         <form action="/admin/users/edit" method="GET">
                             @csrf

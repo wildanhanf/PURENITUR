@@ -35,9 +35,21 @@
                 @foreach($data_order as $data)
                 <tr>
                     <th scope="row">{{ $data->id }}</th>
-                    <td>{{ $data->user_id }}<br><a href="">View User</a></td>
-                    <!-- <td>{{ $data->first_name }} {{ $data->last_name }}</td> -->
-                    <td><a href="">View Cart</a></td>
+                    <td>
+                        <form action="/admin/orders/view-user" method="POST">
+                            @csrf
+                            <input id="user_id" name="user_id" type="hidden" value="{{ $data->user_id }}">
+                            <button type="submit" style="background-color:gray; color:white">View User</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/admin/orders/view-cart" method="POST">
+                            @csrf
+                            <input id="id" name="id" type="hidden" value="{{ $data->id }}">
+                            <input id="cart" name="cart" type="hidden" value="{{ $data->cart }}">
+                            <button type="submit" style="background-color:blue; color:white">View Cart</button>
+                        </form>
+                    </td>
                     <td>{{ $data->price_total }}</td>
                     @if(empty($data->discount->id))
                     <td>EMPTY</td>

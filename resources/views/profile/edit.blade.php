@@ -90,8 +90,14 @@ Edit Profile
                         <div class="w-72 h-14 bg-primary-1 rounded-lg text-center text-white text-md p-3 font-base mb-6 shadow-lg mx-auto">Your Shipment</div>
                     </a>
                     <a href="{{ route('payment') }}">
-                        <div class="w-72 h-14 bg-primary-1 rounded-lg text-center text-white text-md p-3 font-base shadow-lg mx-auto">Your Payment</div>
+                        <div class="w-72 h-14 bg-primary-1 rounded-lg text-center text-white text-md p-3 font-base mb-6 shadow-lg mx-auto">Your Payment</div>
                     </a>
+                    @if(Auth::user()->is_admin == 1)
+                    <a href="{{ route('admin-dashboard') }}">
+                        <div class="w-72 h-14 bg-primary-1 rounded-lg text-center text-white text-md p-3 font-base shadow-lg mx-auto">Admin Dashboard</div>
+                    </a>
+                    @else
+                    @endif
                 </div>
             </div>
         </div>

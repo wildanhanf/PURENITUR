@@ -108,13 +108,17 @@ Cart
                         </div>
                     </div>
 
+                    <a href="{{ route('catalog') }}">
+                        <button class="mt-6 w-full rounded-md bg-primary-1 py-1.5 font-medium text-white hover:bg-primary-2">Go to Catalog</button>
+                    </a>
+
                     <form action="/checkout" method="POST">
                         @csrf
 
                         <input type="hidden" name="cart" value="{{ Cart::content() }}">
                         <input type="hidden" name="total_price" value="{{ Cart::total() }}">
 
-                        <button type="submit" class="mt-6 w-full rounded-md bg-primary-1 py-1.5 font-medium text-white hover:bg-primary-2">Order</button>
+                        <button type="submit" class="mt-6 w-full rounded-md bg-primary-1 py-1.5 font-medium text-white hover:bg-primary-2">Checkout</button>
                     </form>
                 </div>
                 @else
