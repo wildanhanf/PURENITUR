@@ -15,6 +15,8 @@ class CustomizeProductController extends Controller
     public function index()
     {
         //
+        $data_catalog = Product::inRandomOrder()->limit(6)->get();
+        return view('index', ['data' => $data_catalog]);
     }
 
     /**

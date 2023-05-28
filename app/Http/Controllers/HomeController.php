@@ -149,9 +149,23 @@ class HomeController extends Controller
         return redirect()->route('livewire.cart-component');
     }
 
-    public function customization()
+    public function customization(Request $request)
     {
-        return view('livewire.customization-product');
+        $id_one_product = $request->id_per_product;
+        $data_products = Product::select('*')
+            ->join('product_details', 'products.sku', '=', 'product_details.sku')
+            ->where('products.id', '=', $id_one_product)
+            ->get();
+        // dd($id_one_product);
+        $data_catalogs = Product::inRandomOrder()->get();
+        // dd([
+        //     'data_product' => $data_products,
+        //     'data_catalog' => $data_catalogs
+        // ]);
+        return view('livewire.customization-product', [
+            'data_selected_product' => $data_products,
+            'data_catalog' => $data_catalogs,
+        ]);
     }
 
     public function AdminUsers()
