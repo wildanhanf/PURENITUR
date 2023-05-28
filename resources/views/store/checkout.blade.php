@@ -10,7 +10,7 @@ Checkout
 
 @section('content')
 @if (Auth::user())
-<section>
+<section class="xl:mx-64 lg:mx-40 md:mx-48 sm:mx-24 mb-5 mx-5">
     <div class="flex" aria-label="Breadcrumb">
         <ol class="inline-flex items-center pt-12 pl-5 space-x-1 md:space-x-3">
             <li class="inline-flex items-center">
