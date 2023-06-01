@@ -24,6 +24,7 @@ use App\Http\Livewire\ProductDetailComponent;
 // });
 
 Route::get('/catalog', CatalogComponent::class)->name('catalog');
+Route::post('/catalog/{category:category}', [CatalogComponent::class, 'filter_catalog'])->name('catalog-filtered');
 Route::post('/product-detail/{product:name_product}', [ProductDetailComponent::class, 'callPage'])->name('product-detail');
 Route::get('/productDetails', [HomeController::class, 'productDetail'])->name('productDetails');
 Route::get('/shipment', [HomeController::class, 'shipment'])->name('shipment');
@@ -31,6 +32,7 @@ Route::get('/order-detail', [HomeController::class, 'order_detail'])->name('orde
 Route::post('/checkout', [HomeController::class, 'checkout'])->name('checkout');
 Route::get('/checkouts', [HomeController::class, 'create_order'])->name('checkouts');
 Route::get('/customization', [HomeController::class, 'customization'])->name('customization');
+// Route::get('/customization_carts', [HomeController::class, 'customization_carts'])->name('customization_carts');
 
 Route::get('/cart', CartComponent::class)->name('cart');
 Route::get('/dec-qty', [CartComponent::class, 'decreaseQuantity'])->name('dec-qty');

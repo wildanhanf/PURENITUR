@@ -1,7 +1,7 @@
 <nav class="bg-white shadow-md fixed mt-0 w-full z-10 top-0">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="{{ route('home.index') }}" class="flex items-center">
-            <img src="/img/Logo.png" class="h-18 w-20 mr-3" alt="Logo PURENITUR" />
+            <img src="{{ asset('img/Logo.png') }}" class="h-18 w-20 mr-3" alt="Logo PURENITUR" />
         </a>
         <div class="flex items-center md:order-2">
             @if (Auth::user())
@@ -54,22 +54,44 @@
         <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="mobile-menu-2">
             <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white">
                 <li>
-                    <a href="{{ route('catalog') }}" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-teal-500 md:p-0">Kursi</a>
+                    <form id="submits" action="/catalog/kursi" method="POST" class="">
+                        @csrf
+                        <input type="hidden" name="category" id="category" value="Kursi">
+                        <button type="submit" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-teal-500 md:p-0">Kursi</button>
+                    </form>
                 </li>
                 <li>
-                    <a href="{{ route('catalog') }}" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-teal-500 md:p-0">Meja</a>
+                    <form id="submits" action="/catalog/meja" method="POST" class="">
+                        @csrf
+                        <input type="hidden" name="category" id="category" value="Meja">
+                        <button type="submit" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-teal-500 md:p-0">Meja</button>
+                    </form>
                 </li>
                 <li>
-                    <a href="{{ route('catalog') }}" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-teal-500 md:p-0">Lemari</a>
+                    <form id="submits" action="/catalog/lampu" method="POST" class="">
+                        @csrf
+                        <input type="hidden" name="category" id="category" value="Lampu">
+                        <button type="submit" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-teal-500 md:p-0">Lampu</button>
+                    </form>
                 </li>
                 <li>
-                    <a href="{{ route('catalog') }}" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-teal-500 md:p-0">Sofa</a>
+                    <form id="submits" action="/catalog/tanaman" method="POST" class="">
+                        @csrf
+                        <input type="hidden" name="category" id="category" value="Tanaman">
+                        <button type="submit" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-teal-500 md:p-0">Tanaman</button>
+                    </form>
                 </li>
                 <li>
-                    <a href="{{ route('catalog') }}" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-teal-500 md:p-0">Rak</a>
+                    <form id="submits" action="/catalog/rak" method="POST" class="">
+                        @csrf
+                        <input type="hidden" name="category" id="category" value="Kompartemen">
+                        <button type="submit" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-teal-500 md:p-0">Rak</button>
+                    </form>
                 </li>
                 <li>
-                    <a href="{{ route('catalog') }}" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-teal-500 md:p-0">Kasur</a>
+                    <a href="/catalog">
+                        <span class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-teal-500 md:p-0">Catalog</span>
+                    </a>
                 </li>
             </ul>
         </div>

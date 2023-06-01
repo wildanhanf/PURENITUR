@@ -5,6 +5,7 @@ Cart
     @extends('landing.base')
     @section('content')
     @livewireStyles
+    @if(Auth()->user())
     <section class="mt-8 xl:mx-64 lg:mx-40 md:mx-48 sm:mx-24">
         <div class="flex" aria-label="Breadcrumb">
             <ol class="inline-flex items-center pt-12 pl-5 space-x-1 md:space-x-3">
@@ -41,7 +42,7 @@ Cart
             <h1 class="mb-10 p-5 text-2xl font-bold">Shopping Cart</h1>
             @if (Session::has('success_message'))
             <div class="alert alert-success">
-                <strong>Sucess | {{ Session::get('success_message') }}</strong>
+                <strong>Success | {{ Session::get('success_message') }}</strong>
             </div>
             @endif
             <div class="mx-auto justify-center px-6 md:flex md:space-x-6 xl:px-0">
@@ -135,6 +136,20 @@ Cart
             </div>
         </div>
     </section>
+    @else
+    <section class="mt-8 xl:mx-64 lg:mx-40 md:mx-48 sm:mx-24" style="margin-bottom: 10rem;">
+        <div class="mx-auto justify-center px-6 md:flex md:space-x-6 xl:px-0" style="margin-top: 10rem;">
+            <div class="mt-10 mb-10 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
+                <div class="mb-2 text-center">
+                    <p class="text-gray-700">Login Dulu Ya!</p>
+                </div>
+                <a href="{{ '/login' }}">
+                    <button class="w-full rounded-md bg-primary-1 py-1.5 font-medium text-white hover:bg-primary-2">Login</button>
+                </a>
+            </div>
+        </div>
+    </section>
+    @endif
     <script>
         function submitFunction1() {
             var form = document.getElementById("submits1");

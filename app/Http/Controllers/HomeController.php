@@ -162,12 +162,10 @@ class HomeController extends Controller
             ->join('product_details', 'products.sku', '=', 'product_details.sku')
             ->where('products.id', '=', $id_one_product)
             ->get();
-        // dd($id_one_product);
-        $data_catalogs = Product::inRandomOrder()->get();
-        // dd([
-        //     'data_product' => $data_products,
-        //     'data_catalog' => $data_catalogs
-        // ]);
+        $data_catalogs = Product::select('*')
+            ->where('category', '=', 'Meja')
+            ->orWhere('category', '=', 'Kompartemen')
+            ->get();
         return view('livewire.customization-product', [
             'data_selected_product' => $data_products,
             'data_catalog' => $data_catalogs,
