@@ -38,6 +38,11 @@
                     <p>Data Discount</p>
                 </a>
             </li>
+            <li>
+                <a href="{{ route('home.index') }}">
+                    <p>BACK TO WEBSITE</p>
+                </a>
+            </li>
         </ul>
     </div>
 </div>

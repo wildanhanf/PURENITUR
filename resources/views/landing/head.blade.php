@@ -4,5 +4,5 @@
 @vite('resources/css/app.css')
 <title>@yield('title')</title>
 @yield('js_script')
-<link rel="shortcut icon" href="/img/fav-logo.png">
+<link rel="shortcut icon" href="{{ asset('img/fav-logo.png') }}">
 <link rel="stylesheet" href="/css/app.css">

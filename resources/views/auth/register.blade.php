@@ -11,7 +11,7 @@ Register
 <script src="https://cdn.tailwindcss.com"></script>
 <div class=" bg-[url('/img/register-login.png')] h-screen justify-center flex items-center">
     <div class="container">
-        <img src="/img/logo.png" class="mx-auto mb-3 w-[108px]" alt="PURENITUR Logo">
+        <img src="{{ asset('img/Logo.png') }}" class="mx-auto mb-3 w-[108px]" alt="PURENITUR Logo">
         <h1 class="text-lg font-semibold mb-3 text-center">Welcome to PURENITUR</h1>
         <form method="post" action="{{ route('register.perform') }}" class="px-7 py-7 shadow-lg rounded-md max-w-lg items-center mx-auto">
 

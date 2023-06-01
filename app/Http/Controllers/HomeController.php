@@ -77,9 +77,24 @@ class HomeController extends Controller
 
     public function update_order(Request $request)
     {
+        $json = json_decode($request->cart);
+
+        foreach ($json as $data) {
+            $arr[] = $data->id;
+        }
+
+        for ($i = 0; $i < sizeof($arr); $i++) {
+            $param1 = Product::where('id', $arr[$i])->get('sold');
+            $param2 = Product::where('id', $arr[$i])
+                ->update([
+                    'sold' => $param1[0]->sold + 1,
+                ]);
+        }
+
         $validatedData  = $request->validate([
             'image_payment' => 'required'
         ]);
+
         $validatedData['transaction_id'] = $request->id;
         $validatedData['status_payment'] = "WAITING FOR CONFIRMATION";
         $validatedData['image_payment'] = $request->image_payment;
@@ -91,15 +106,6 @@ class HomeController extends Controller
 
         $profile1 = Order::where('id', $request->id)
             ->update($validatedData);
-
-
-        // $profile1 = Order::where('id', $request->id)
-        //     ->update([
-        //         'transaction_id' => $request->id,
-        //         'status_payment' => "WAITING FOR CONFIRMATION",
-        //         'image_payment' => $request->image_payment,
-        //         'updated_at' => Carbon::now()->setTimezone('Asia/Jakarta'),
-        //     ]);
 
         return redirect('/payment');
     }

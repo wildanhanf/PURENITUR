@@ -66,6 +66,7 @@ Payment
                     <h2 class="text-lg font-bold text-gray-900">ORDER ID : PRNTR-ORD-{{ $data->id }}
                     </h2>
                     <input id="id" type="hidden" name="id" value="{{ $data->id }}" required readonly>
+                    <input id="cart" type="hidden" name="cart" value="{{ $data->cart }}" required readonly>
 
                     <h2 class="text-md font-bold text-gray-900">Status Pembayaran :
                         {{ $data->status_payment }}
@@ -88,47 +89,47 @@ Payment
                     @if ($data->transaction_id > 0)
                     @else
                     <button class="mt-6 w-32 rounded-md bg-primary-1 py-1.5 font-medium text-white hover:bg-primary-2">Confirm</button>
-                                    @endif
-                                </div>
-                            </div>
-
-                        </form>
-                    @endforeach
+                    @endif
                 </div>
-                <!-- Sub total -->
-                <p class="my-2 font-bold text-lg">Payment Method</p>
-                <div class="mt-2 h-full rounded-lg border bg-primary-1 p-6 shadow-md md:mt-0 md:w-2/3">
-                    <div class="mt-2 sm:mt-0">
-                        <ol class="pl-4 max-w-md space-y-1 text-white list-decimal list-outside">
-                            <li>
-                                <span class="font-semibold">Pembayaran Hanya Transfer ke Bank BCA</span>
-                            </li>
-                            <li>
-                                <span class="font-semibold">Rekening PURENITUR<br>BCA 111111111 an PT PURENITUR</span>
-                            </li>
-                            <li>
-                                <span class="font-semibold">Simpan tanda bukti pembayaran.</span>
-                            </li>
-                            <li>
-                                <span class="font-semibold">Upload Foto bukti pembayaran pada Formulir di samping</span>
-                            </li>
-                            <li>
-                                <span class="font-semibold">Pembayaran akan dikonfirmasi paling lambat 1 x 24 jam,
-                                    pembayaran akan otomatis batal jika melebihi waktu yang ditentukan.</span>
-                            </li>
-                        </ol>
-                    </div>
-                </div>
-        @else
-            <div class="mt-10 mb-10 rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
-                <div class="mb-2 text-center">
-                    <p class="text-gray-700">Kamu belom belanja. <br>Yuk Belanja Dulu!</p>
-                </div>
-                <a href="{{ 'catalog' }}">
-                    <button class="w-full rounded-md bg-primary-1 py-1.5 font-medium text-white hover:bg-primary-2">Go to
-                        Catalog</button>
-                </a>
             </div>
-        @endif
-    </section>
+
+        </form>
+        @endforeach
+    </div>
+    <!-- Sub total -->
+    <p class="my-2 font-bold text-lg">Payment Method</p>
+    <div class="mt-2 h-full rounded-lg border bg-primary-1 p-6 shadow-md md:mt-0 md:w-2/3">
+        <div class="mt-2 sm:mt-0">
+            <ol class="pl-4 max-w-md space-y-1 text-white list-decimal list-outside">
+                <li>
+                    <span class="font-semibold">Pembayaran Hanya Transfer ke Bank BCA</span>
+                </li>
+                <li>
+                    <span class="font-semibold">Rekening PURENITUR<br>BCA 111111111 an PT PURENITUR</span>
+                </li>
+                <li>
+                    <span class="font-semibold">Simpan tanda bukti pembayaran.</span>
+                </li>
+                <li>
+                    <span class="font-semibold">Upload Foto bukti pembayaran pada Formulir di samping</span>
+                </li>
+                <li>
+                    <span class="font-semibold">Pembayaran akan dikonfirmasi paling lambat 1 x 24 jam,
+                        pembayaran akan otomatis batal jika melebihi waktu yang ditentukan.</span>
+                </li>
+            </ol>
+        </div>
+    </div>
+    @else
+    <div class="mt-10 mb-10 rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
+        <div class="mb-2 text-center">
+            <p class="text-gray-700">Kamu belom belanja. <br>Yuk Belanja Dulu!</p>
+        </div>
+        <a href="{{ 'catalog' }}">
+            <button class="w-full rounded-md bg-primary-1 py-1.5 font-medium text-white hover:bg-primary-2">Go to
+                Catalog</button>
+        </a>
+    </div>
+    @endif
+</section>
 @endsection
