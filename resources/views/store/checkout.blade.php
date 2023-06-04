@@ -71,7 +71,7 @@ Checkout
                     <p class="my-2">Quantity : {{ $item->qty }}</p>
                     <p class="my-2">Name : {{ $item->model->name_product }}</p>
                     <p class="my-2">SKU : {{ $item->model->sku }}</p>
-                    <p class="my-2">Price : {{ $item->model->price }}</p>
+                    <p class="my-2">Base Price : {{ $item->model->price }}</p>
                     <img src="{{ $item->model->image }}" class="h-32 w-32 my-2 border border-primary-2 rounded-md p-2">
                     <hr class="h-1 my-8 bg-primary-2 border-0 rounded-md">
                     @endforeach
@@ -93,25 +93,35 @@ Checkout
                     <input id="cart" type="hidden" name="cart" value="{{ $cart }}" required readonly>
                 </div>
 
-                <div class="">
+                <div class="mb-2">
                     <div class="form-check">
                     </div>
 
-                    <div class=""><span class="my-2">Gunakan Kupon Diskon!!</span>
+                    <div class="">
+                        <label class="my-2" for="discount_name">Gunakan Kupon Diskon!!</label>
                     </div>
 
-                    <input id="discount_id" type="text" name="discount_id" style="border:1px solid black" class="my-2 rounded-sm">
-                </div>
+                    <!-- <input id="discount_name" type="text" name="discount_name" style="border:1px solid black" class="my-2 rounded-sm"> -->
+                    <select name="discount_name" id="discount_name" style="border:1px solid black">
+                        @foreach($discount as $check_discount)
+                        <option value="{{ $check_discount->name_discount }}">
+                            {{ $check_discount->name_discount }} ({{ $check_discount->percentage }}%)
+                        </option>
+                        @endforeach
+                        <option value="" selected>Tidak Menggunakan Kupon Diskon</option>
+                    </select>
 
-                <div class="">
-                    <div class="form-check">
+                    <div class="my-2">
+                        <span class="" id="start_text" name="start_text"></span>
+                        <span class="" id="check" name="check"></span>
                     </div>
 
-                    <div class=""><span class="my-2">Final Price</span>
-                        <div class="my-2"><span>{{ $total_price }}</span></div>
+                    <div class="mt-2"><span class="my-2">Final Price</span>
+                        <div class="">
+                            <span id="percentage" name="percentage"></span>
+                            <input id="final_price" type="text" name="final_price" value="" required readonly>
+                        </div>
                     </div>
-
-                    <input id="final_price" type="hidden" name="final_price" value="{{ $total_price }}" required readonly>
                 </div>
         </div>
 
@@ -186,6 +196,74 @@ Checkout
             //submit hasil nya ke hidden form melalui id "submit_form"
             $('#submit_form').submit();
         }
+
+        var e = document.getElementById("discount_name");
+
+        function onChange() {
+            var value = e.value;
+            var start_text = '';
+            var percentage;
+            var total_price = document.getElementById("total_price").value;
+            var parsed_total_price = parseInt(total_price.replace(/\D/, ''));
+            var last_price
+            if (e.value == '') {
+                start_text = 'Anda Belum Menggunakan Kupon Diskon';
+                percentage = 0;
+                document.getElementById("percentage").innerHTML = ``;
+                last_price = (parsed_total_price * (100 - percentage)) / 100;
+                document.getElementById("final_price").value = total_price;
+            } else if (e.value == 'Diskon Libur Nasional') {
+                start_text = 'Anda Menggunakan Kupon ';
+                percentage = 15;
+                document.getElementById("percentage").innerHTML = `<span>${total_price} (Potongan ${percentage}%) = </span>`;
+                last_price = (parsed_total_price * (100 - percentage)) / 100;
+                // last_price = last_price.toString();
+                last_price = last_price.toLocaleString();
+                last_price = last_price.split('.')[0];
+                last_price = last_price + '.00';
+                document.getElementById("final_price").value = last_price;
+            } else if (e.value == 'Diskon Ramadhan') {
+                start_text = 'Anda Menggunakan Kupon ';
+                percentage = 30;
+                document.getElementById("percentage").innerHTML = `<span>${total_price} (Potongan ${percentage}%) = </span>`;
+                last_price = (parsed_total_price * (100 - percentage)) / 100;
+                last_price = last_price.toString();
+                last_price = last_price.split('.')[0];
+                last_price = last_price + '.00';
+                document.getElementById("final_price").value = last_price;
+            } else if (e.value == 'Diskon Natal') {
+                start_text = 'Anda Menggunakan Kupon ';
+                percentage = 30;
+                document.getElementById("percentage").innerHTML = `<span>${total_price} (Potongan ${percentage}%) = </span>`;
+                last_price = (parsed_total_price * (100 - percentage)) / 100;
+                last_price = last_price.toString();
+                last_price = last_price.split('.')[0];
+                last_price = last_price + '.00';
+                document.getElementById("final_price").value = last_price;
+            } else if (e.value == 'Diskon Ulang Tahun PURENITUR') {
+                start_text = 'Anda Menggunakan Kupon ';
+                percentage = 50;
+                document.getElementById("percentage").innerHTML = `<span>${total_price} (Potongan ${percentage}%) = </span>`;
+                last_price = (parsed_total_price * (100 - percentage)) / 100;
+                last_price = last_price.toString();
+                last_price = last_price.split('.')[0];
+                last_price = last_price + '.00';
+                document.getElementById("final_price").value = last_price;
+            } else if (e.value == 'Diskon Cuci Gudang') {
+                start_text = 'Anda Menggunakan Kupon ';
+                percentage = 70;
+                document.getElementById("percentage").innerHTML = `<span>${total_price} (Potongan ${percentage}%) = </span>`;
+                last_price = (parsed_total_price * (100 - percentage)) / 100;
+                last_price = last_price.toString();
+                last_price = last_price.split('.')[0];
+                last_price = last_price + '.00';
+                document.getElementById("final_price").value = last_price;
+            }
+            document.getElementById("start_text").innerHTML = `<span>${start_text}</span>`;
+            document.getElementById("check").innerHTML = `<span>${value}!</span>`;
+        }
+        e.onchange = onChange;
+        onChange();
     </script>
 </section>
 @else

@@ -51,7 +51,7 @@
                         </form>
                     </td>
                     <td>{{ $data->price_total }}</td>
-                    @if(empty($data->discount->id))
+                    @if(empty($data->discount_id))
                     <td>EMPTY</td>
                     @else
                     <td>{{ $data->discount_id }}</td>

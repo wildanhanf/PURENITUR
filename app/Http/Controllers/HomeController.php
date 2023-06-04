@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\User;
 use App\Models\Order;
+use App\Models\Discount;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\View\View;
@@ -63,7 +64,7 @@ class HomeController extends Controller
             "user_id" => $request->id,
             "cart" => $request->cart,
             "price_total" => $val1,
-            "discount_id" => $request->discount_id,
+            "discount_id" => $request->discount_name,
             "final_price" => $val2,
             "payment_type" => $request->payment_method,
             "shipment_address" => $request->shipment_address,
@@ -123,11 +124,14 @@ class HomeController extends Controller
     {
         $json = json_decode($request->cart);
 
+        $data_discount = Discount::all();
+
         return view('store.checkout', [
             'cart' => $request->cart,
             'json' => $json,
             'total_price' => $request->total_price,
             'user' => $request->user(),
+            'discount' => $data_discount,
         ]);
     }
 

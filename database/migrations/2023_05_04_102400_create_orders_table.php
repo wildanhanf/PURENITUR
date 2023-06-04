@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('user_id');
             $table->json('cart');
             $table->decimal('price_total', 10);
-            $table->integer('discount_id')->nullable();
+            $table->string('discount_id')->nullable();
             $table->decimal('final_price', 10);
             $table->integer('transaction_id')->default(null)->unique()->nullable();
             $table->string('payment_type');
