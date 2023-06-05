@@ -181,19 +181,12 @@ Checkout
         </form>
     </div>
 
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
 
     <script type="text/javascript">
         function send_response_to_form(result) {
-            //jadi masukan hasil result berbentuk JSON yang telah di ubah ke bentuk string oleh JSON.stringify, ke dalam value json_callback
             document.getElementById('json_callback').value = JSON.stringify(result);
-
-            // //buat coba-coba
-            // alert(document.getElementById('json_callback').value);
-
-            //submit hasil nya ke hidden form melalui id "submit_form"
             $('#submit_form').submit();
         }
 
@@ -204,7 +197,11 @@ Checkout
             var start_text = '';
             var percentage;
             var total_price = document.getElementById("total_price").value;
-            var parsed_total_price = parseInt(total_price.replace(/\D/, ''));
+            var temp_total_price = total_price;
+            temp_total_price = temp_total_price.replace(',', '');
+            temp_total_price = temp_total_price.replace(',', '');
+            temp_total_price = temp_total_price.replace(',', '');
+            var parsed_total_price = parseInt(temp_total_price);
             var last_price
             if (e.value == '') {
                 start_text = 'Anda Belum Menggunakan Kupon Diskon';
@@ -217,7 +214,6 @@ Checkout
                 percentage = 15;
                 document.getElementById("percentage").innerHTML = `<span>${total_price} (Potongan ${percentage}%) = </span>`;
                 last_price = (parsed_total_price * (100 - percentage)) / 100;
-                // last_price = last_price.toString();
                 last_price = last_price.toLocaleString();
                 last_price = last_price.split('.')[0];
                 last_price = last_price + '.00';
@@ -227,7 +223,7 @@ Checkout
                 percentage = 30;
                 document.getElementById("percentage").innerHTML = `<span>${total_price} (Potongan ${percentage}%) = </span>`;
                 last_price = (parsed_total_price * (100 - percentage)) / 100;
-                last_price = last_price.toString();
+                last_price = last_price.toLocaleString();
                 last_price = last_price.split('.')[0];
                 last_price = last_price + '.00';
                 document.getElementById("final_price").value = last_price;
@@ -236,7 +232,7 @@ Checkout
                 percentage = 30;
                 document.getElementById("percentage").innerHTML = `<span>${total_price} (Potongan ${percentage}%) = </span>`;
                 last_price = (parsed_total_price * (100 - percentage)) / 100;
-                last_price = last_price.toString();
+                last_price = last_price.toLocaleString();
                 last_price = last_price.split('.')[0];
                 last_price = last_price + '.00';
                 document.getElementById("final_price").value = last_price;
@@ -245,7 +241,7 @@ Checkout
                 percentage = 50;
                 document.getElementById("percentage").innerHTML = `<span>${total_price} (Potongan ${percentage}%) = </span>`;
                 last_price = (parsed_total_price * (100 - percentage)) / 100;
-                last_price = last_price.toString();
+                last_price = last_price.toLocaleString();
                 last_price = last_price.split('.')[0];
                 last_price = last_price + '.00';
                 document.getElementById("final_price").value = last_price;
@@ -254,7 +250,7 @@ Checkout
                 percentage = 70;
                 document.getElementById("percentage").innerHTML = `<span>${total_price} (Potongan ${percentage}%) = </span>`;
                 last_price = (parsed_total_price * (100 - percentage)) / 100;
-                last_price = last_price.toString();
+                last_price = last_price.toLocaleString();
                 last_price = last_price.split('.')[0];
                 last_price = last_price + '.00';
                 document.getElementById("final_price").value = last_price;
