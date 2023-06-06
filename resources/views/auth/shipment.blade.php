@@ -52,7 +52,7 @@ Shipment
     </div>
 </section>
 <section id="shipment" class="lg:mx-64 md:mx-48 sm:mx-24 mx-5 mb-3">
-    <h1 class="mb-3 text-2xl font-bold">Payment</h1>
+    <h1 class="mb-3 text-2xl font-bold">Shipment</h1>
     @if ($shipment->count() > 0)
     @foreach($shipment as $data_shipment)
     <div class="w-full h-full xl:w-1/2 border-2 border-slate-800 rounded-md mb-3 p-5">

@@ -43,7 +43,7 @@
 
             <div class="mt-2 mb-2">
                 <label for="rating">Rating</label>
-                <input id="rating" name="rating" type="text" value="{{ $data->rating }}" style="border:1px solid black" required>
+                <input id="rating" name="rating" type="number" step="0.1" min="1.0" max="5.0" value="{{ $data->rating }}" style="border:1px solid black" required>
             </div>
 
             <div class="mt-2 mb-2">

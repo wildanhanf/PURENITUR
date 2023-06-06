@@ -10,6 +10,7 @@ use App\Models\Shipment;
 use App\Models\Customize_Product;
 use App\Models\Discount;
 use App\Models\ProductDetail;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -44,13 +45,40 @@ class AdminController extends Controller
         }
     }
 
+    public function visit_user_create()
+    {
+        if (auth()->user()->is_admin == 1) {
+            return view('admin.create.adminUserCreate');
+        } else {
+            return redirect('/');
+        }
+    }
+
+    public function user_create(Request $request)
+    {
+        if (auth()->user()->is_admin == 1) {
+            $param = User::create([
+                'email' => $request->email,
+                'username' => $request->username,
+                'password' => Hash::make($request->password),
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'gender' => $request->gender,
+                'address' => $request->address,
+                'telephone' => $request->telephone,
+                'is_admin' => $request->is_admin,
+            ]);
+            return redirect('/admin/users');
+        } else {
+            return redirect('/');
+        }
+    }
+
     public function user_update(Request $request)
     {
         if (auth()->user()->is_admin == 1) {
             $param = User::where('id', $request->id)
                 ->update([
-                    'id' => $request->id,
-                    'email' => $request->email,
                     'first_name' => $request->first_name,
                     'last_name' => $request->last_name,
                     'gender' => $request->gender,
@@ -97,6 +125,59 @@ class AdminController extends Controller
             return view('admin.edit.adminProductEdit', [
                 'data_product' => $data_product,
             ]);
+        } else {
+            return redirect('/');
+        }
+    }
+
+    public function visit_product_create()
+    {
+        if (auth()->user()->is_admin == 1) {
+            return view('admin.create.adminProductCreate');
+        } else {
+            return redirect('/');
+        }
+    }
+
+    public function product_create(Request $request)
+    {
+        $template_sku = "PRNTNRNEW";
+        $get_last_sku = Product::select('id')->orderBy('id', 'DESC')->limit(1)->get();
+        $create_sku = $template_sku . strval($get_last_sku[0]->id + 2);
+
+        $get_price = $request->price . '.00';
+
+        $get_rating = $request->rating;
+        if ($request->rating == '1') {
+            $get_rating = $request->rating . '.0';
+        } elseif ($request->rating == '2') {
+            $get_rating = $request->rating . '.0';
+        } elseif ($request->rating == '3') {
+            $get_rating = $request->rating . '.0';
+        } elseif ($request->rating == '4') {
+            $get_rating = $request->rating . '.0';
+        } elseif ($request->rating == '5') {
+            $get_rating = $request->rating . '.0';
+        }
+        if (auth()->user()->is_admin == 1) {
+            $param1 = Product::create([
+                'name_product' => $request->name_product,
+                'category' => $request->category,
+                'sku' => $create_sku,
+                'price' => $get_price,
+                'image' => $request->image,
+                'rating' => $get_rating,
+                'sold' => 0,
+            ]);
+            $param2 = ProductDetail::create([
+                'name_product' => $request->name_product,
+                'sku' => $create_sku,
+                'feature_1' => $request->feature_1,
+                'feature_2' => $request->feature_2,
+                'feature_3' => $request->feature_3,
+                'feature_4' => $request->feature_4,
+            ]);
+            return redirect('/admin/products');
         } else {
             return redirect('/');
         }
@@ -160,11 +241,9 @@ class AdminController extends Controller
     {
         if (auth()->user()->is_admin == 1) {
             $data_order = Order::select('*')
-                // ->join('users', 'users.id', '=', 'orders.user_id')
                 ->where('orders.id', '=', $request->id)
                 ->get();
 
-            // dd($data_order);
             return view('admin.edit.adminOrderEdit', [
                 'data_order' => $data_order,
             ]);
@@ -207,7 +286,6 @@ class AdminController extends Controller
     {
         if (auth()->user()->is_admin == 1) {
             $json = json_decode($request->cart);
-            // dd($json);
             return view('admin.view.viewCart', [
                 'json' => $json,
             ]);
@@ -243,6 +321,68 @@ class AdminController extends Controller
         if (auth()->user()->is_admin == 1) {
             $data_discount = Discount::select('*')->get();
             return view('admin.adminDiscount', ['data_discount' => $data_discount]);
+        } else {
+            return redirect('/');
+        }
+    }
+
+    public function visit_discount_create()
+    {
+        if (auth()->user()->is_admin == 1) {
+            return view('admin.create.adminDiscountCreate');
+        } else {
+            return redirect('/');
+        }
+    }
+
+    public function discount_create(Request $request)
+    {
+        if (auth()->user()->is_admin == 1) {
+            $param = Discount::create([
+                'name_discount' => $request->name_discount,
+                'percentage' => $request->percentage,
+            ]);
+            return redirect('/admin/discounts');
+        } else {
+            return redirect('/');
+        }
+    }
+
+    public function visit_discount_edit(Request $request)
+    {
+        if (auth()->user()->is_admin == 1) {
+            $data_discount = Discount::select('*')
+                ->where('discounts.id', '=', $request->id)
+                ->get();
+
+            return view('admin.edit.adminDiscountEdit', [
+                'data_discount' => $data_discount,
+            ]);
+        } else {
+            return redirect('/');
+        }
+    }
+
+    public function discount_update(Request $request)
+    {
+        if (auth()->user()->is_admin == 1) {
+            $param = Discount::where('id', $request->id)
+                ->update([
+                    'id' => $request->id,
+                    'name_discount' => $request->name_discount,
+                    'percentage' => $request->percentage,
+                ]);
+            return redirect('/admin/discounts');
+        } else {
+            return redirect('/');
+        }
+    }
+
+    public function discount_delete(Request $request)
+    {
+        if (auth()->user()->is_admin == 1) {
+            $param = Discount::where('id', $request->id)->delete();
+            return redirect('/admin/discounts');
         } else {
             return redirect('/');
         }

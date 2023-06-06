@@ -21,16 +21,6 @@ class ProfileController extends Controller
 
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        // dd([
-        //     $request->id,
-        //     $request->username,
-        //     $request->email,
-        //     $request->first_name,
-        //     $request->last_name,
-        //     $request->gender,
-        //     $request->telephone,
-        // ]);
-
         $profile = User::where('id', $request->id)
             ->update([
                 'username' => $request->username,

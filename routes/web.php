@@ -53,10 +53,14 @@ Route::get('/admin/discounts', [AdminController::class, 'visit_discount'])->name
 
 // Route::get('/admin-users', [HomeController::class, 'AdminUsers'])->name('admin-users');
 
+Route::get('/admin/users/create', [AdminController::class, 'visit_user_create'])->name('admin-user-create');
+Route::get('/admin/users/create/create', [AdminController::class, 'user_create'])->name('admin-user-create-create');
 Route::get('/admin/users/edit', [AdminController::class, 'visit_user_edit'])->name('admin-user-edit');
 Route::get('/admin/users/edit/update', [AdminController::class, 'user_update'])->name('admin-user-update');
 Route::get('/admin/users/edit/delete', [AdminController::class, 'user_delete'])->name('admin-user-delete');
 
+Route::get('/admin/products/create', [AdminController::class, 'visit_product_create'])->name('admin-product-create');
+Route::get('/admin/products/create/create', [AdminController::class, 'product_create'])->name('admin-product-create-create');
 Route::get('/admin/products/edit', [AdminController::class, 'visit_product_edit'])->name('admin-product-edit');
 Route::get('/admin/products/edit/update', [AdminController::class, 'product_update'])->name('admin-product-update');
 Route::get('/admin/products/edit/delete', [AdminController::class, 'product_delete'])->name('admin-product-delete');
@@ -65,7 +69,11 @@ Route::get('/admin/orders/edit', [AdminController::class, 'visit_order_edit'])->
 Route::get('/admin/orders/edit/update', [AdminController::class, 'order_update'])->name('admin-order-update');
 Route::get('/admin/orders/edit/delete', [AdminController::class, 'order_delete'])->name('admin-order-delete');
 
-
+Route::get('/admin/discounts/create', [AdminController::class, 'visit_discount_create'])->name('admin-discount-create');
+Route::get('/admin/discounts/create/create', [AdminController::class, 'discount_create'])->name('admin-discount-create-create');
+Route::get('/admin/discounts/edit', [AdminController::class, 'visit_discount_edit'])->name('admin-discount-edit');
+Route::get('/admin/discounts/edit/update', [AdminController::class, 'discount_update'])->name('admin-discount-update');
+Route::get('/admin/discounts/edit/delete', [AdminController::class, 'discount_delete'])->name('admin-discount-delete');
 
 
 Route::group(['namespace' => 'App\Http\Controllers'], function () {

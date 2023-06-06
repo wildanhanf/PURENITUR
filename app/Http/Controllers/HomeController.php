@@ -15,7 +15,6 @@ class HomeController extends Controller
 {
     public function index()
     {
-        // $data_catalog = Product::all();
         $data_catalog = Product::inRandomOrder()->limit(6)->get();
         return view('index', ['data' => $data_catalog]);
     }

@@ -7,6 +7,11 @@
 @section('title', 'Data User')
 
 @section('content')
+<div class="row d-flex justify-content-center align-items-center">
+    <a href="/admin/users/create" class="text-center">
+        <button style="background-color:yellow">Create New User</button>
+    </a>
+</div>
 <div class="row d-flex mt-5 mb-5 justify-content-center align-items-center">
     <div class="col-10 d-flex justify-content-center align-items-center">
         <table class="table table-bordered" style="border:black">

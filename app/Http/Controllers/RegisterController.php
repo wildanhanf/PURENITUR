@@ -29,8 +29,6 @@ class RegisterController extends Controller
      */
     public function register(Request $request): RedirectResponse
     {
-        // dd($request);
-
         $request->validate([
             'email' => 'required|email:rfc,dns|unique:users,email',
             'username' => 'required|unique:users,username|min:4|max:16',
